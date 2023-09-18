@@ -1,0 +1,15 @@
+c:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\bin\Debug\net7.0\Persistence.deps.json
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\bin\Debug\net7.0\Persistence.dll
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\bin\Debug\net7.0\Persistence.pdb
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\bin\Debug\net7.0\Domain.dll
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\bin\Debug\net7.0\Domain.pdb
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.csproj.AssemblyReference.cache
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfoInputs.cache
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfo.cs
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.csproj.CoreCompileInputs.cache
+c:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.csproj.CopyComplete
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.dll
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\refint\Persistence.dll
+C:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\Persistence.pdb
+c:\Users\nixon\OneDrive\Documentos\c#\PracticasWebToken\Persistence\obj\Debug\net7.0\ref\Persistence.dll

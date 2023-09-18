@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\API\\API.csproj": {}
+    "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\API\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\API\\API.csproj": {
+    "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\API\\API.csproj",
+        "projectUniqueName": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\APT01-62\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\API\\obj\\",
+        "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\nixon\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APT01-62\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nixon\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Application\\Application.csproj": {
-                "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Application\\Application.csproj"
+              "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Application\\Application.csproj": {
+                "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Application\\Application.csproj"
               }
             }
           }
@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[11.7.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "Microsoft.AspNetCore.Mvc.Versioning": {
               "target": "Package",
               "version": "[5.1.0, )"
@@ -59,6 +63,8 @@
               "version": "[7.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.11, )"
             },
@@ -69,6 +75,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -94,17 +104,17 @@
         }
       }
     },
-    "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Application\\Application.csproj": {
+    "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Application\\Application.csproj",
+        "projectUniqueName": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\APT01-62\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Application\\obj\\",
+        "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\nixon\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APT01-62\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nixon\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -116,11 +126,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\Domain.csproj": {
-                "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\Domain.csproj"
+              "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\Domain.csproj": {
+                "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\Domain.csproj"
               },
-              "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj": {
-                "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj"
+              "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj": {
+                "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -154,17 +164,17 @@
         }
       }
     },
-    "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\Domain.csproj": {
+    "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\Domain.csproj",
+        "projectUniqueName": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\APT01-62\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\obj\\",
+        "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\nixon\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APT01-62\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nixon\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -187,6 +197,20 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "itext7.pdfhtml": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -207,17 +231,17 @@
         }
       }
     },
-    "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj": {
+    "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\APT01-62\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Persistence\\obj\\",
+        "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\nixon\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APT01-62\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nixon\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -229,8 +253,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\Domain.csproj": {
-                "projectPath": "c:\\Users\\APT01-62\\Documents\\c#\\PracticasWebToken\\Domain\\Domain.csproj"
+              "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\Domain.csproj": {
+                "projectPath": "c:\\Users\\nixon\\OneDrive\\Documentos\\c#\\PracticasWebToken\\Domain\\Domain.csproj"
               }
             }
           }
@@ -244,6 +268,16 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
