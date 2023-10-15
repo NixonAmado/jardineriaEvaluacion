@@ -8,9 +8,9 @@ using Persistencia.Data;
 namespace Application.Repository;
 public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
-    private readonly PracticasTokenContext _context;
+    private readonly DbAppContext _context;
 
-    public GenericRepository(PracticasTokenContext context)
+    public GenericRepository(DbAppContext context)
     {
         _context = context;
     }
@@ -50,5 +50,14 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         _context.Set<T>()
             .Update(entity);
+    }
+    public virtual async Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync (int pageIndex, int pageSize, string _search)
+    {
+        var totalRegistros = await _context.Set<T>().CountAsync();
+        var registros = await _context.Set<T>()
+            .Skip((pageIndex - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+        return (totalRegistros, registros);
     }
 }

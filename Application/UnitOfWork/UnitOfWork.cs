@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Repository;
 using Domain.Interfaces;
 using Persistencia.Data;
@@ -10,24 +6,24 @@ namespace Application.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork,IDisposable
     {
-        private readonly PracticasTokenContext _context;
-        private RolRepository _rols;
+        private readonly DbAppContext _context;
+        private RoleRepository _roles;
         private UserRepository _users;
 
-        public UnitOfWork(PracticasTokenContext context)
+        public UnitOfWork(DbAppContext context)
         {
             _context = context;
         }
 
-        public IRol Rols
+        public IRole Roles
         {
             get
             {
-                if(_rols == null)
+                if(_roles == null)
                 {
-                    _rols = new RolRepository(_context);
+                    _roles = new RoleRepository(_context);
                 }
-                return (IRol)_rols;
+                return _roles;
             }
         }
         public IUser Users{

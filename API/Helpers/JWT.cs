@@ -9,7 +9,7 @@ namespace API.Helpers
     {
         public string Key {get;set;}
         public string Issuer {get;set;}
-        public string Audiece {get;set;}
+        public string Audience {get;set;}
         public double DurationInMinutes {get;set;}
         
     }
