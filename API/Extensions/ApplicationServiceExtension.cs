@@ -10,7 +10,7 @@ using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using API.Helpers;
-namespace ApiPharmacy.Extensions;
+namespace API.Extensions;
 public static class ApplicationServiceExtension
 {
     public static void ConfigureCors(this IServiceCollection services) =>

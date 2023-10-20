@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Persistence.Data.Migrations
 {
     /// <inheritdoc />
@@ -56,21 +58,21 @@ namespace Persistence.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IdUserFk = table.Column<int>(type: "int", nullable: false),
-                    userId = table.Column<int>(type: "int", nullable: true),
-                    Token = table.Column<string>(type: "longtext", nullable: true)
+                    Token = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Expires = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Revoked = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Expires = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    Created = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    Revoked = table.Column<DateTime>(type: "DateTime", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RefreshToken", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RefreshToken_User_userId",
-                        column: x => x.userId,
+                        name: "FK_RefreshToken_User_IdUserFk",
+                        column: x => x.IdUserFk,
                         principalTable: "User",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -99,10 +101,19 @@ namespace Persistence.Data.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "Description" },
+                values: new object[,]
+                {
+                    { 1, "Administrador" },
+                    { 2, "Empleado" }
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_RefreshToken_userId",
+                name: "IX_RefreshToken_IdUserFk",
                 table: "RefreshToken",
-                column: "userId");
+                column: "IdUserFk");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsersRoles_IdUserFk",

@@ -11,7 +11,7 @@ using Persistencia.Data;
 namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(DbAppContext))]
-    [Migration("20231014184445_InitialCreate01")]
+    [Migration("20231020165105_InitialCreate01")]
     partial class InitialCreate01
     {
         /// <inheritdoc />
@@ -29,28 +29,27 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("DateTime");
 
                     b.Property<DateTime>("Expires")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("DateTime");
 
                     b.Property<int>("IdUserFk")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Revoked")
-                        .HasColumnType("datetime(6)");
+                    b.Property<DateTime?>("Revoked")
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Token")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("userId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("IdUserFk");
 
-                    b.ToTable("RefreshToken");
+                    b.ToTable("RefreshToken", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
@@ -67,6 +66,18 @@ namespace Persistence.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Role", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Administrador"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Empleado"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -115,11 +126,13 @@ namespace Persistence.Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.RefreshToken", b =>
                 {
-                    b.HasOne("Domain.Entities.User", "user")
+                    b.HasOne("Domain.Entities.User", "User")
                         .WithMany("RefreshTokens")
-                        .HasForeignKey("userId");
+                        .HasForeignKey("IdUserFk")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("user");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.UserRole", b =>

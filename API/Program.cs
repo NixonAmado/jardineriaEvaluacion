@@ -1,12 +1,26 @@
 using System.Reflection;
-using ApiPharmacy.Extensions;
+using API.Extensions;
+using API.Helpers;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Persistence;
 using Persistencia.Data;
+using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+// var logger = new LoggerConfiguration()
+//                     .ReadFrom.Configuration(builder.Configuration)
+//                     .Enrich.FromLogContext()
+//                     .CreateLogger();
+
+//builder.Logging.ClearProviders();
+//builder.Logging.AddSerilog(logger);
+
+// Add services to the container.
 builder.Services.AddControllers(options => 
 {
     options.RespectBrowserAcceptHeader = true;
@@ -29,7 +43,9 @@ builder.Services.AddDbContext<DbAppContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 var app = builder.Build();
+//app.UseMiddleware<ExceptionMiddleware>();
 
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -43,6 +59,8 @@ using(var scope= app.Services.CreateScope()){
     try{
     var context = services.GetRequiredService<DbAppContext>();
     await context.Database.MigrateAsync();
+    //await DbAppContextSeed.SeedRolesAsync(context,loggerFactory);
+	//	await DbAppContextSeed.SeedAsync(context,loggerFactory);
     }
     catch(Exception ex){
     var logger = loggerFactory.CreateLogger<Program>();
@@ -51,6 +69,7 @@ using(var scope= app.Services.CreateScope()){
 }
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy"); //- le decimos que use el cors "CorsPolicy"
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseIpRateLimiting();
 app.MapControllers();

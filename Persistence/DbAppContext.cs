@@ -17,6 +17,14 @@ public class DbAppContext: DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        var roles = new[]
+        {
+            new Role { Id = 1, Description = "Administrador" },
+            new Role { Id = 2, Description = "Empleado" },
+            // Agrega otros roles según tus necesidades
+        };
+
+        modelBuilder.Entity<Role>().HasData(roles);
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }
