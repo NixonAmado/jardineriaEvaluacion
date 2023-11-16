@@ -6225,32 +6225,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\APT01-65\\.nuget\\packages\\": {}
+    "C:\\Users\\paula\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\API\\obj\\",
+      "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\sdk\\7.0.310\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj"
+            "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj"
             }
           }
         }
@@ -6339,7 +6340,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
       }
     }
   }
