@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {}
+    "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {}
   },
   "projects": {
-    "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
+    "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -67,21 +67,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
+    "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Persistence\\obj\\",
+        "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -93,8 +93,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj"
+              "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\Domain.csproj"
               }
             }
           }
@@ -138,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

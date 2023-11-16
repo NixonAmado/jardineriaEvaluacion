@@ -11,8 +11,8 @@ using Persistence.Data;
 namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(DbAppContext))]
-    [Migration("20231116050045_InitialCreate02")]
-    partial class InitialCreate02
+    [Migration("20231116153654_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,9 +39,8 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("adress_line1");
 
-                    b.Property<int?>("CountryId")
-                        .HasColumnType("int")
-                        .HasColumnName("country_id");
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(10)
@@ -51,7 +50,7 @@ namespace Persistence.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PRIMARY");
 
-                    b.HasIndex(new[] { "CountryId" }, "country_id_idx");
+                    b.HasIndex(new[] { "CityId" }, "City_id_idx");
 
                     b.ToTable("address", (string)null);
                 });
@@ -556,12 +555,11 @@ namespace Persistence.Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.Address", b =>
                 {
-                    b.HasOne("Domain.Entities.Country", "Country")
+                    b.HasOne("Domain.Entities.City", "City")
                         .WithMany("Addresses")
-                        .HasForeignKey("CountryId")
-                        .HasConstraintName("country_id");
+                        .HasForeignKey("CityId");
 
-                    b.Navigation("Country");
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Domain.Entities.City", b =>
@@ -608,7 +606,7 @@ namespace Persistence.Data.Migrations
                     b.HasOne("Domain.Entities.Address", "Address")
                         .WithMany("Offices")
                         .HasForeignKey("AddressId")
-                        .HasConstraintName("addres_id");
+                        .HasConstraintName("address_id");
 
                     b.Navigation("Address");
                 });
@@ -722,10 +720,13 @@ namespace Persistence.Data.Migrations
                     b.Navigation("Offices");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Country", b =>
+            modelBuilder.Entity("Domain.Entities.City", b =>
                 {
                     b.Navigation("Addresses");
+                });
 
+            modelBuilder.Entity("Domain.Entities.Country", b =>
+                {
                     b.Navigation("States");
                 });
 

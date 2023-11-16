@@ -20,15 +20,10 @@ class AddressConfiguration:IEntityTypeConfiguration<Address>
         builder.Property(e => e.AdressLine1)
             .HasMaxLength(50)
             .HasColumnName("adress_line1");
-        builder.Property(e => e.CityId).HasColumnName("City_id");
         builder.Property(e => e.PostalCode)
             .HasMaxLength(10)
             .HasColumnName("postal_code");
         builder.HasOne(d => d.City).WithMany(p => p.Addresses)
-                .HasForeignKey(d => d.CityId)
-                .HasConstraintName("city_id");
-       
+            .HasForeignKey(d => d.CityId);
     }
 }  
-  
- 

@@ -16,7 +16,7 @@ public partial class Employee
 
     public string OfficeId { get; set; } = null!;
 
-    public int BossId { get; set; }
+    public int? BossId { get; set; }
 
     public string JobTitle { get; set; } = null!;
 

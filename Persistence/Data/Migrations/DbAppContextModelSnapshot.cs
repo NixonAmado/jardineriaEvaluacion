@@ -37,8 +37,7 @@ namespace Persistence.Data.Migrations
                         .HasColumnName("adress_line1");
 
                     b.Property<int?>("CityId")
-                        .HasColumnType("int")
-                        .HasColumnName("City_id");
+                        .HasColumnType("int");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(10)
@@ -149,7 +148,7 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<int>("BossId")
+                    b.Property<int?>("BossId")
                         .HasColumnType("int")
                         .HasColumnName("boss_id");
 
@@ -252,8 +251,8 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("date")
                         .HasColumnName("order_date");
 
-                    b.Property<int?>("PaymentId")
-                        .HasColumnType("int")
+                    b.Property<string>("PaymentId")
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("payment_id");
 
                     b.Property<string>("Status")
@@ -307,9 +306,8 @@ namespace Persistence.Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.Payment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("id");
 
                     b.Property<DateOnly>("PaymentDate")
@@ -555,8 +553,7 @@ namespace Persistence.Data.Migrations
                 {
                     b.HasOne("Domain.Entities.City", "City")
                         .WithMany("Addresses")
-                        .HasForeignKey("CityId")
-                        .HasConstraintName("city_id");
+                        .HasForeignKey("CityId");
 
                     b.Navigation("City");
                 });
@@ -587,7 +584,6 @@ namespace Persistence.Data.Migrations
                     b.HasOne("Domain.Entities.Employee", "Boss")
                         .WithMany("InverseBoss")
                         .HasForeignKey("BossId")
-                        .IsRequired()
                         .HasConstraintName("boss_id");
 
                     b.HasOne("Domain.Entities.Office", "Office")
@@ -605,7 +601,7 @@ namespace Persistence.Data.Migrations
                     b.HasOne("Domain.Entities.Address", "Address")
                         .WithMany("Offices")
                         .HasForeignKey("AddressId")
-                        .HasConstraintName("addres_id");
+                        .HasConstraintName("address_id");
 
                     b.Navigation("Address");
                 });

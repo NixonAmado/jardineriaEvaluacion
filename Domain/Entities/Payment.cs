@@ -6,7 +6,7 @@ namespace Domain.Entities;
 
 public partial class Payment
 {
-    public int Id { get; set; }
+    public string Id { get; set; }
 
     public DateOnly PaymentDate { get; set; }
 

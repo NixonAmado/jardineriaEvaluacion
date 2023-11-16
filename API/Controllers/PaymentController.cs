@@ -59,7 +59,7 @@ public class PaymentController : BaseApiController
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<string>> Put(int id,[FromBody] Payment Payment)
+    public async Task<ActionResult<string>> Put(string id,[FromBody] Payment Payment)
     {
         if (Payment == null|| id != Payment.Id)
         {

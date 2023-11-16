@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate01 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace Persistence.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "city",
+                name: "country",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -108,15 +108,15 @@ namespace Persistence.Data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     name = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    city_id = table.Column<int>(type: "int", nullable: true)
+                    CountryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PRIMARY", x => x.id);
                     table.ForeignKey(
                         name: "city_id",
-                        column: x => x.city_id,
-                        principalTable: "city",
+                        column: x => x.CountryId,
+                        principalTable: "country",
                         principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -223,23 +223,24 @@ namespace Persistence.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "country",
+                name: "city",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     name = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    state_id = table.Column<int>(type: "int", nullable: true)
+                    StateId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PRIMARY", x => x.id);
                     table.ForeignKey(
-                        name: "state_id",
-                        column: x => x.state_id,
+                        name: "FK_city_state_StateId",
+                        column: x => x.StateId,
                         principalTable: "state",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -255,15 +256,15 @@ namespace Persistence.Data.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     postal_code = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    country_id = table.Column<int>(type: "int", nullable: true)
+                    CityId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PRIMARY", x => x.id);
                     table.ForeignKey(
-                        name: "country_id",
-                        column: x => x.country_id,
-                        principalTable: "country",
+                        name: "FK_address_city_CityId",
+                        column: x => x.CityId,
+                        principalTable: "city",
                         principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -312,7 +313,7 @@ namespace Persistence.Data.Migrations
                 {
                     table.PrimaryKey("PRIMARY", x => x.id);
                     table.ForeignKey(
-                        name: "addres_id",
+                        name: "address_id",
                         column: x => x.address_id,
                         principalTable: "address",
                         principalColumn: "id");
@@ -431,14 +432,14 @@ namespace Persistence.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "country_id_idx",
+                name: "City_id_idx",
                 table: "address",
-                column: "country_id");
+                column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "state_id_idx",
-                table: "country",
-                column: "state_id");
+                name: "IX_city_StateId",
+                table: "city",
+                column: "StateId");
 
             migrationBuilder.CreateIndex(
                 name: "adress_id_idx",
@@ -501,9 +502,9 @@ namespace Persistence.Data.Migrations
                 column: "IdUserFk");
 
             migrationBuilder.CreateIndex(
-                name: "city_id_idx",
+                name: "IX_state_CountryId",
                 table: "state",
-                column: "city_id");
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsersRoles_IdUserFk",
@@ -557,13 +558,13 @@ namespace Persistence.Data.Migrations
                 name: "address");
 
             migrationBuilder.DropTable(
-                name: "country");
+                name: "city");
 
             migrationBuilder.DropTable(
                 name: "state");
 
             migrationBuilder.DropTable(
-                name: "city");
+                name: "country");
         }
     }
 }

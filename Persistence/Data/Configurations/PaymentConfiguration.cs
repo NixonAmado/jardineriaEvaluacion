@@ -25,8 +25,7 @@ class PaymentConfiguration:IEntityTypeConfiguration<Payment>
         builder.HasOne(d => d.PaymentMethod).WithMany(p => p.Payments)
             .HasForeignKey(d => d.PaymentMethodId)
             .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasConstraintName("payment_method_id");
-       
+            .HasConstraintName("payment_method_id");  
     }
 }  
   
