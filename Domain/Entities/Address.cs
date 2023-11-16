@@ -14,9 +14,9 @@ public partial class Address
 
     public string PostalCode { get; set; } = null!;
 
-    public int? CountryId { get; set; }
+    public int? CityId { get; set; }
 
-    public virtual Country? Country { get; set; }
+    public virtual City? City { get; set; }
 
     public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
 

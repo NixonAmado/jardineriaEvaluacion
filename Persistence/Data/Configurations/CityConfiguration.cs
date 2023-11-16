@@ -19,6 +19,9 @@ class CityConfiguration:IEntityTypeConfiguration<City>
             .HasMaxLength(45)
             .HasColumnName("name");
        
+       builder.HasOne(p => p.State)
+       .WithMany(s => s.Cities)
+       .HasForeignKey(f => f.StateId);
     }
 }  
   

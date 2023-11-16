@@ -12,17 +12,14 @@ class StateConfiguration:IEntityTypeConfiguration<State>
     {
         builder.HasKey(e => e.Id).HasName("PRIMARY");
         builder.ToTable("state");
-        builder.HasIndex(e => e.CityId, "city_id_idx");
         builder.Property(e => e.Id).HasColumnName("id");
-        builder.Property(e => e.CityId).HasColumnName("city_id");
         builder.Property(e => e.Name)
             .HasMaxLength(45)
             .HasColumnName("name");
-        builder.HasOne(d => d.City).WithMany(p => p.States)
-                .HasForeignKey(d => d.CityId)
+        builder.HasOne(d => d.Country).WithMany(p => p.States)
+                .HasForeignKey(d => d.CountryId)
                 .HasConstraintName("city_id");
 
-       
     }
 }  
   

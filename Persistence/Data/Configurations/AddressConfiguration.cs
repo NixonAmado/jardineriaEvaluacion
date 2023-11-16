@@ -12,7 +12,7 @@ class AddressConfiguration:IEntityTypeConfiguration<Address>
     {
         builder.HasKey(e => e.Id).HasName("PRIMARY");
         builder.ToTable("address");
-        builder.HasIndex(e => e.CountryId, "country_id_idx");
+        builder.HasIndex(e => e.CityId, "City_id_idx");
         builder.Property(e => e.Id).HasColumnName("id");
         builder.Property(e => e.AddressLine2)
             .HasMaxLength(50)
@@ -20,13 +20,13 @@ class AddressConfiguration:IEntityTypeConfiguration<Address>
         builder.Property(e => e.AdressLine1)
             .HasMaxLength(50)
             .HasColumnName("adress_line1");
-        builder.Property(e => e.CountryId).HasColumnName("country_id");
+        builder.Property(e => e.CityId).HasColumnName("City_id");
         builder.Property(e => e.PostalCode)
             .HasMaxLength(10)
             .HasColumnName("postal_code");
-        builder.HasOne(d => d.Country).WithMany(p => p.Addresses)
-                .HasForeignKey(d => d.CountryId)
-                .HasConstraintName("country_id");
+        builder.HasOne(d => d.City).WithMany(p => p.Addresses)
+                .HasForeignKey(d => d.CityId)
+                .HasConstraintName("city_id");
        
     }
 }  

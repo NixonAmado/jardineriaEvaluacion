@@ -26,7 +26,7 @@ class OfficeConfiguration:IEntityTypeConfiguration<Office>
 
         builder.HasOne(d => d.Address).WithMany(p => p.Offices)
             .HasForeignKey(d => d.AddressId)
-            .HasConstraintName("addres_id");    
+            .HasConstraintName("address_id");    
     }
 }  
   

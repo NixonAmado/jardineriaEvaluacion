@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hq6WdsWKoVSd+ZaMNDgZvT9wvrRm+hqcNZAI6v6FN6U3m6U2j19X5rnyoLkkLVcA9kMvOyhypJI1hn2qSQn2+A==",
+  "dgSpecHash": "10lFZaCRH2RZ3PT/H2S46289QoKaurhYPmBGjxl7N3LjDk4770UpiPUCJw9DI+WMc1J/XGuZ7JdN55enV3lobA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\api\\API.csproj",
+  "projectFilePath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\paula\\.nuget\\packages\\aspnetcoreratelimit\\5.0.0\\aspnetcoreratelimit.5.0.0.nupkg.sha512",
     "C:\\Users\\paula\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",

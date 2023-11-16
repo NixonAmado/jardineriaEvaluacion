@@ -10,9 +10,8 @@ public partial class State
 
     public string Name { get; set; } = null!;
 
-    public int? CityId { get; set; }
+    public int? CountryId { get; set; }
+    public virtual Country? Country { get; set; }
 
-    public virtual City? City { get; set; }
-
-    public virtual ICollection<Country> Countries { get; set; } = new List<Country>();
+    public ICollection<City> Cities {get;set;}
 }
