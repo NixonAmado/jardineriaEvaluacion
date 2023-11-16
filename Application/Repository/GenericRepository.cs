@@ -2,11 +2,11 @@ using System.Linq.Expressions;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Persistence;
-using Persistencia.Data;
+using Persistence.Data;
+
 
 namespace Application.Repository;
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
     private readonly DbAppContext _context;
 
@@ -18,6 +18,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         _context.Set<T>().Add(entity);
     }
+    
     public virtual void AddRange(IEnumerable<T> entities)
     {
         _context.Set<T>().AddRange(entities);

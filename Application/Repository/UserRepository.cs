@@ -1,7 +1,8 @@
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Persistencia.Data;
+using Persistence.Data;
+
 
 namespace Application.Repository
 {
@@ -27,25 +28,24 @@ namespace Application.Repository
             .Include(u => u.RefreshTokens)
             .FirstOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == refreshToken));
         }
-// public override async Task<(int totalRegistros, IEnumerable<MedicalTreatment> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
-//         {
-//             var query = _context.MedicalTreatments as IQueryable<MedicalTreatment>;
+        public override async Task<(int totalRegistros, IEnumerable<User> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+                {
+                    var query = _context1.Users as IQueryable<User>;
 
-//             if(!string.IsNullOrEmpty(search))
-//             {
-//                 query = query.Where(p => p.Id.ToString() == search);
-//             }
+                    if(!string.IsNullOrEmpty(search))
+                    {
+                        query = query.Where(p => p.Id.ToString() == search);
+                    }
 
-//             query = query.OrderBy(p => p.Id);
-//             var totalRegistros = await query.CountAsync();
-//             var registros = await query
-//                 .Include(p => p.Product)
-//                 .Skip((pageIndex - 1) * pageSize)
-//                 .Take(pageSize)
-//                 .ToListAsync();
+                    query = query.OrderBy(p => p.Id);
+                    var totalRegistros = await query.CountAsync();
+                    var registros = await query
+                        .Skip((pageIndex - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToListAsync();
 
-//             return (totalRegistros, registros);
-//         }
+                    return (totalRegistros, registros);
+                }
 
     }
 }

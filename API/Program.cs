@@ -5,7 +5,7 @@ using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
-using Persistencia.Data;
+using Persistence.Data;
 using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +53,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 using(var scope= app.Services.CreateScope()){
     var services = scope.ServiceProvider;
     var loggerFactory = services.GetRequiredService<ILoggerFactory>();
