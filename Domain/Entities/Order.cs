@@ -12,7 +12,7 @@ public partial class Order
 
     public DateOnly ExpectedDate { get; set; }
 
-    public DateOnly DeliveryDate { get; set; }
+    public DateOnly? DeliveryDate { get; set; }
 
     public string Status { get; set; } = null!;
 

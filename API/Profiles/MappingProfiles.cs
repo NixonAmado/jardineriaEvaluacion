@@ -26,6 +26,10 @@ public class MappingProfiles : Profile
         CreateMap<Product, P_ProductDto>().ReverseMap();
         CreateMap<ProductGama, P_ProductGamaDto>().ReverseMap();
         CreateMap<State, P_StateDto>().ReverseMap();
+        CreateMap<Customer, CustumerNameDto>().ReverseMap();
+        CreateMap<Order, OrderStatusDto>().ReverseMap();
+
+
 
 
     }

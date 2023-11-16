@@ -15,4 +15,9 @@ namespace API.Dtos
         public decimal? CreditLimit { get; set; }
             
     }
+    public class CustumerNameDto
+    {
+        public string? Name { get; set; }
+
+    }
 }

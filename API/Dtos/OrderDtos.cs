@@ -19,4 +19,9 @@ namespace API.Dtos
         public int? EmployeeId { get; set; }
 
     }
+    public class OrderStatusDto
+    {    
+        public string Status { get; set; }
+
+    }
 }

@@ -514,6 +514,19 @@
           }
         }
       },
+      "morelinq/4.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MoreLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MoreLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "MySqlConnector/2.2.5": {
         "type": "package",
         "compile": {
@@ -2295,6 +2308,28 @@
         "runtimes/win/lib/net46/Microsoft.Win32.Registry.dll",
         "runtimes/win/lib/netcore50/_._",
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll"
+      ]
+    },
+    "morelinq/4.0.0": {
+      "sha512": "MUyjssR1HPf2eNFYj/j170VlDRes5Jl7/DEC5WfN5LolA3pjhbCe2EIp4bcNpNENtMRenlj2nRD+D5KQmk4TMQ==",
+      "type": "package",
+      "path": "morelinq/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "COPYING.txt",
+        "README.md",
+        "lib/net6.0/MoreLinq.dll",
+        "lib/net6.0/MoreLinq.pdb",
+        "lib/net6.0/MoreLinq.xml",
+        "lib/netstandard2.0/MoreLinq.dll",
+        "lib/netstandard2.0/MoreLinq.pdb",
+        "lib/netstandard2.0/MoreLinq.xml",
+        "lib/netstandard2.1/MoreLinq.dll",
+        "lib/netstandard2.1/MoreLinq.pdb",
+        "lib/netstandard2.1/MoreLinq.xml",
+        "morelinq.4.0.0.nupkg.sha512",
+        "morelinq.nuspec"
       ]
     },
     "MySqlConnector/2.2.5": {
@@ -5269,23 +5304,24 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Domain >= 1.0.0",
-      "Persistence >= 1.0.0"
+      "Persistence >= 1.0.0",
+      "morelinq >= 4.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AIO\\.nuget\\packages\\": {}
+    "C:\\Users\\APT01-65\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Application\\obj\\",
+      "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -5297,11 +5333,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Domain\\Domain.csproj"
+            "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Persistence\\Persistence.csproj"
+            "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj"
             }
           }
         }
@@ -5315,6 +5351,12 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "morelinq": {
+            "target": "Package",
+            "version": "[4.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -5331,7 +5373,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

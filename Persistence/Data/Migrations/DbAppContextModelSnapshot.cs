@@ -235,7 +235,7 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("customer_id");
 
-                    b.Property<DateOnly>("DeliveryDate")
+                    b.Property<DateOnly?>("DeliveryDate")
                         .HasColumnType("date")
                         .HasColumnName("delivery_date");
 
@@ -379,6 +379,10 @@ namespace Persistence.Data.Migrations
                         .HasPrecision(15, 2)
                         .HasColumnType("decimal(15,2)")
                         .HasColumnName("sale_price");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("int")
+                        .HasColumnName("stock");
 
                     b.Property<string>("Supplier")
                         .HasMaxLength(45)

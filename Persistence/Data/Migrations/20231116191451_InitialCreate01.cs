@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCreate01 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -125,8 +125,8 @@ namespace Persistence.Data.Migrations
                 name: "payment",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    id = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     payment_date = table.Column<DateOnly>(type: "date", nullable: false),
                     total = table.Column<decimal>(type: "decimal(15,2)", precision: 15, scale: 2, nullable: false),
                     payment_method_id = table.Column<int>(type: "int", nullable: false)
@@ -338,7 +338,7 @@ namespace Persistence.Data.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     office_id = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    boss_id = table.Column<int>(type: "int", nullable: false),
+                    boss_id = table.Column<int>(type: "int", nullable: true),
                     job_title = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -371,7 +371,8 @@ namespace Persistence.Data.Migrations
                     comments = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     customer_id = table.Column<int>(type: "int", nullable: true),
-                    payment_id = table.Column<int>(type: "int", nullable: true),
+                    payment_id = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     employee_id = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

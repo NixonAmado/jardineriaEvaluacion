@@ -11,8 +11,8 @@ using Persistence.Data;
 namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(DbAppContext))]
-    [Migration("20231116153654_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231116200136_InitialCreate02")]
+    partial class InitialCreate02
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,7 +151,7 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<int>("BossId")
+                    b.Property<int?>("BossId")
                         .HasColumnType("int")
                         .HasColumnName("boss_id");
 
@@ -238,7 +238,7 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("customer_id");
 
-                    b.Property<DateOnly>("DeliveryDate")
+                    b.Property<DateOnly?>("DeliveryDate")
                         .HasColumnType("date")
                         .HasColumnName("delivery_date");
 
@@ -254,8 +254,8 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("date")
                         .HasColumnName("order_date");
 
-                    b.Property<int?>("PaymentId")
-                        .HasColumnType("int")
+                    b.Property<string>("PaymentId")
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("payment_id");
 
                     b.Property<string>("Status")
@@ -309,9 +309,8 @@ namespace Persistence.Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.Payment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("id");
 
                     b.Property<DateOnly>("PaymentDate")
@@ -383,6 +382,10 @@ namespace Persistence.Data.Migrations
                         .HasPrecision(15, 2)
                         .HasColumnType("decimal(15,2)")
                         .HasColumnName("sale_price");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("int")
+                        .HasColumnName("stock");
 
                     b.Property<string>("Supplier")
                         .HasMaxLength(45)
@@ -588,7 +591,6 @@ namespace Persistence.Data.Migrations
                     b.HasOne("Domain.Entities.Employee", "Boss")
                         .WithMany("InverseBoss")
                         .HasForeignKey("BossId")
-                        .IsRequired()
                         .HasConstraintName("boss_id");
 
                     b.HasOne("Domain.Entities.Office", "Office")

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 [ApiVersion("1.0")]
 [ApiVersion("1.1")]
-[Authorize(Roles = "Empleado, Administrador, Gerente")]
+//[Authorize(Roles = "Empleado, Administrador, Gerente")]
 public class OrderController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -27,6 +27,14 @@ public class OrderController : BaseApiController
     {
         var Orders = await _unitOfWork.Orders.GetAllAsync();
         return _mapper.Map<List<P_OrderDto>>(Orders);
+    }
+    [HttpGet("GetAllStatus")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetAllStatus()
+    {
+        var Orders = await _unitOfWork.Orders.GetAllStatus();
+        return _mapper.Map<List<object>>(Orders);
     }
 
     [HttpGet]

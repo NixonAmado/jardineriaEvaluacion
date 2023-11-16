@@ -18,6 +18,8 @@ public partial class Product
 
     public string Description { get; set; } = null!;
 
+    public int StockQuantity { get; set; }
+
     public decimal SalePrice { get; set; }
 
     public decimal SupplierPrice { get; set; }

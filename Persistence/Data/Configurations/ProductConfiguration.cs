@@ -35,6 +35,8 @@ class ProductConfiguration:IEntityTypeConfiguration<Product>
         builder.Property(e => e.Supplier)
             .HasMaxLength(45)
             .HasColumnName("supplier");
+        builder.Property(e => e.StockQuantity)
+            .HasColumnName("stock");
         builder.Property(e => e.SupplierPrice)
             .HasPrecision(15, 2)
             .HasColumnName("supplier_price");

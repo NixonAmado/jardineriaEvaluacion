@@ -14,6 +14,15 @@ namespace Application.Repository;
         {
             _context = context;
         }
+        //1. Devuelve un listado con el nombre de los todos los clientes españoles.
+        public async Task<IEnumerable<Customer>> GetByCountry(string country)
+        {
+            return await _context.Customers
+                .Where(c => c.Address.City.State.Country.Name == country)
+                .ToListAsync();
+        }
+
+
   public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Customers as IQueryable<Customer>;

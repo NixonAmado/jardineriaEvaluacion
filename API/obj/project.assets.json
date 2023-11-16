@@ -844,6 +844,19 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "morelinq/4.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MoreLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MoreLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "MySqlConnector/2.2.5": {
         "type": "package",
         "compile": {
@@ -1957,7 +1970,8 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Domain": "1.0.0",
-          "Persistence": "1.0.0"
+          "Persistence": "1.0.0",
+          "morelinq": "4.0.0"
         },
         "compile": {
           "bin/placeholder/Application.dll": {}
@@ -3324,6 +3338,28 @@
         "lib/netstandard2.0/Mono.TextTemplating.dll",
         "mono.texttemplating.2.2.1.nupkg.sha512",
         "mono.texttemplating.nuspec"
+      ]
+    },
+    "morelinq/4.0.0": {
+      "sha512": "MUyjssR1HPf2eNFYj/j170VlDRes5Jl7/DEC5WfN5LolA3pjhbCe2EIp4bcNpNENtMRenlj2nRD+D5KQmk4TMQ==",
+      "type": "package",
+      "path": "morelinq/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "COPYING.txt",
+        "README.md",
+        "lib/net6.0/MoreLinq.dll",
+        "lib/net6.0/MoreLinq.pdb",
+        "lib/net6.0/MoreLinq.xml",
+        "lib/netstandard2.0/MoreLinq.dll",
+        "lib/netstandard2.0/MoreLinq.pdb",
+        "lib/netstandard2.0/MoreLinq.xml",
+        "lib/netstandard2.1/MoreLinq.dll",
+        "lib/netstandard2.1/MoreLinq.pdb",
+        "lib/netstandard2.1/MoreLinq.xml",
+        "morelinq.4.0.0.nupkg.sha512",
+        "morelinq.nuspec"
       ]
     },
     "MySqlConnector/2.2.5": {
@@ -6225,19 +6261,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AIO\\.nuget\\packages\\": {}
+    "C:\\Users\\APT01-65\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\API\\obj\\",
+      "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -6249,8 +6285,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\AIO\\Documents\\c#\\jardineriaEvaluacion\\Application\\Application.csproj"
+            "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj"
             }
           }
         }
@@ -6339,7 +6375,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
