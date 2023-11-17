@@ -45,7 +45,6 @@ public class CustomerController : BaseApiController
         var customers = await _unitOfWork.Customers.GetByCityEmployee(city, employeeId1, employeeId2);
         return _mapper.Map<List<P_CustomerDto>>(customers);
     }
-
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -54,7 +53,49 @@ public class CustomerController : BaseApiController
         var Customers = await _unitOfWork.Customers.GetAllAsync();
         return _mapper.Map<List<P_CustomerDto>>(Customers);
     }
-
+    [HttpGet("GetNameAndEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetNameAndEmployee()
+    {
+        var Customers = await _unitOfWork.Customers.GetNameAndEmployee();
+        return Ok(Customers);
+    }
+    
+    [HttpGet("GetNameAndNameEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByOrderEmployee()
+    {
+        var Customers = await _unitOfWork.Customers.GetByOrderEmployee();
+        return Ok(Customers);
+    }
+    [HttpGet("GetByOrderNotPaymentEmployeeCity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByOrderNotPaymentEmployeeCity()
+    {
+        var Customers = await _unitOfWork.Customers.GetByOrderNotPaymentEmployeeCity();
+        return Ok(Customers);
+    }
+    
+    [HttpGet("GetByOrderNotPaymentEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByOrderNotPaymentEmployee()
+    {
+        var Customers = await _unitOfWork.Customers.GetByOrderNotPaymentEmployee();
+        return Ok(Customers);
+    }
+    
+    [HttpGet("GetByOrderPaymentEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByOrderPaymentEmployee()
+    {
+        var Customers = await _unitOfWork.Customers.GetByOrderPaymentEmployee();
+        return Ok(Customers);
+    }
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

@@ -91,20 +91,33 @@ sintaxis de SQL2 se deben resolver con INNER JOIN y NATURAL JOIN.
 ```
 /API/customer/GetByCityEmployee/{ciudad}/{idEmployee1}/{idEmployee2}
 ```
-1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su
-representante de ventas.
-2. Muestra el nombre de los clientes que hayan realizado pagos junto con el
-nombre de sus representantes de ventas.
+1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+```
+/API/customer/GetNameAndEmployee
+```
+
+2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+```
+/API/customer/GetNameAndEmployee
+```
 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con
 el nombre de sus representantes de ventas.
+```
+/API/customer/GetByOrderNotPaymentEmployee
+```
 4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus
 representantes junto con la ciudad de la oficina a la que pertenece el
 representante.
+```
+/API/customer/GetByOrderPaymentEmployee
+```
 5. Devuelve el nombre de los clientes que no hayan hecho pagos y el nombre
-de sus representantes junto con la ciudad de la oficina a la que pertenece el
-representante.
+de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+```
+/API/customer/GetByOrderNotPaymentEmployeeCity
+```
 6. Devuelve un listado que muestre el nombre de cada empleados, el nombre
-de su jefe y el nombre del jefe de sus jefe.
+de su jefe y el nombre del jefe de su jefe.
 7. Devuelve el nombre de los clientes a los que no se les ha entregado a
 tiempo un pedido.
 8. Devuelve un listado de las diferentes gamas de producto que ha comprado

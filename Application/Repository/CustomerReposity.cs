@@ -43,9 +43,110 @@ namespace Application.Repository;
                                 .Where(c => c.Address.City.Name.ToUpper() == city.ToUpper() && c.Orders.All(o => o.EmployeeId == employeeId1 || o.EmployeeId == employeeId2))
                                 .ToListAsync();
         }
+        //1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+        public async Task<IEnumerable<object>> GetNameAndEmployee()
+        {
+            //En la normalización cambie la relación de empleado con cliente, para que tanto el cliente como el empleado como el pago apuntaran a la orden, así que, en este caso un 
+            //cliente no tiene un solo representante de ventas, si no que, puede estar ligado a muchos representantes, ya que puede hacer muchas ordenes.
+            return await _context.Customers
+                                .Include(c => c.Orders)
+                                .ThenInclude(o => o.Employee)
+                                .Select(c => new 
+                                {
+                                    c.Name,
+                                    associatedEmployees = 
+                                    c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                        LastName = o.Employee.LastName1 , o.Employee.LastName2
+                                    }).Distinct()
+                                })
+                                .ToListAsync();
+        }
+        //2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+        public async Task<IEnumerable<object>> GetByOrderEmployee()
+        {
+            //En la normalización cambie la relación de empleado con cliente, para que tanto el cliente como el empleado como el pago apuntaran a la orden, así que, en este caso un 
+            //cliente no tiene un solo representante de ventas, si no que, puede estar ligado a muchos representantes, ya que puede hacer muchas ordenes.
+           return await _context.Customers
+                                .Include(c => c.Orders)
+                                .ThenInclude(o => o.Employee)
+                                .Where(c => c.Orders.Any())
+                                .Select(c => new 
+                                {
+                                    c.Name,
+                                    associatedEmployees = 
+                                    c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                    }).Distinct()
+                                })
+                                .ToListAsync();
+        }
 
-
-  public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+        //3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.
+        public async Task<IEnumerable<object>> GetByOrderNotPaymentEmployee()
+        {
+            //En la normalización cambie la conexión de empleado con cliente, para que tanto el cliente como el empleado como el pago apuntaran a la orden, así que, en este caso un 
+            //cliente no tiene un solo representante de ventas, si no que, puede estar ligado a muchos representantes, ya que puede hacer muchas ordenes.
+           return await _context.Customers
+                                .Include(c => c.Orders)
+                                .ThenInclude(o => o.Employee)
+                                .Where(c => c.Orders.Any(o => o.PaymentId == null))
+                                .Select(c => new 
+                                {
+                                    c.Name,
+                                    associatedEmployees = 
+                                    c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                    }).Distinct()
+                                })
+                                .ToListAsync();
+        }
+        // 4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+        public async Task<IEnumerable<object>> GetByOrderPaymentEmployee()
+        {
+            //En la normalización cambie la conexión de empleado con cliente, para que tanto el cliente como el empleado como el pago apuntaran a la orden, así que, en este caso un 
+            //cliente no tiene un solo representante de ventas, si no que, puede estar ligado a muchos representantes, ya que puede hacer muchas ordenes.
+           return await _context.Customers
+                                .Include(c => c.Orders)
+                                .ThenInclude(o => o.Employee)
+                                .Where(c => c.Orders.Any(o => o.PaymentId != null))
+                                .Select(c => new 
+                                {
+                                    c.Name,
+                                    associatedEmployees = 
+                                    c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                        City = o.Employee.Office.Address.City.Name
+                                    }).Distinct()
+                                })
+                                .ToListAsync();
+        }
+        //5. Devuelve el nombre de los clientes que no hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+        public async Task<IEnumerable<object>> GetByOrderNotPaymentEmployeeCity()
+        {
+            
+           return await _context.Customers
+                                .Include(c => c.Orders)
+                                .ThenInclude(o => o.Employee)
+                                .Where(c => c.Orders.Any(o => o.PaymentId == null))
+                                .Select(c => new 
+                                {
+                                    c.Name,
+                                    associatedEmployees = 
+                                    c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                        City = o.Employee.Office.Address.City.Name
+                                    }).Distinct()
+                                })
+                                .ToListAsync();
+        }
+        
+        public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Customers as IQueryable<Customer>;
     

@@ -1,3 +1,5 @@
+using Domain.Entities;
+
 namespace API.Dtos
 {
     public class P_CustomerDto
@@ -19,8 +21,11 @@ namespace API.Dtos
     {
         public string? Name { get; set; }
     }
+
     public class CustumerIdDto
     {
         public int? Id { get; set; }
     }
+
+
 }
