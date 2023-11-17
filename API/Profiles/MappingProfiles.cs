@@ -18,6 +18,8 @@ public class MappingProfiles : Profile
         CreateMap<City, P_CityDto>().ReverseMap();
         CreateMap<Country, P_CountryDto>().ReverseMap();
         CreateMap<Customer, P_CustomerDto>().ReverseMap();
+        CreateMap<Customer, CustumerIdDto>().ReverseMap();
+        CreateMap<Customer, CustumerNameDto>().ReverseMap();
         CreateMap<Employee, P_EmployeeDto>().ReverseMap();
         CreateMap<Office, P_OfficeDto>().ReverseMap();
         CreateMap<Order, P_OrderDto>().ReverseMap();
@@ -26,8 +28,9 @@ public class MappingProfiles : Profile
         CreateMap<Product, P_ProductDto>().ReverseMap();
         CreateMap<ProductGama, P_ProductGamaDto>().ReverseMap();
         CreateMap<State, P_StateDto>().ReverseMap();
-        CreateMap<Customer, CustumerNameDto>().ReverseMap();
         CreateMap<Order, OrderStatusDto>().ReverseMap();
+        CreateMap<Order, EssencialOrderAtrDto>().ReverseMap();
+
 
 
 

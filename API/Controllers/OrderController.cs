@@ -36,6 +36,22 @@ public class OrderController : BaseApiController
         var Orders = await _unitOfWork.Orders.GetAllStatus();
         return _mapper.Map<List<object>>(Orders);
     }
+    [HttpGet("GetAllDeliveredEarlier")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<EssencialOrderAtrDto>>> GetAllDeliveredEarlier()
+    {
+        var Orders = await _unitOfWork.Orders.GetAllDeliveredEarlier();
+        return _mapper.Map<List<EssencialOrderAtrDto>>(Orders);
+    }
+    [HttpGet("GetAllNotDeliveredOnTime")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<EssencialOrderAtrDto>>> GetAllNotDeliveredOnTime()
+    {
+        var Orders = await _unitOfWork.Orders.GetAllNotDeliveredOnTime();
+        return _mapper.Map<List<EssencialOrderAtrDto>>(Orders);
+    }    
 
     [HttpGet]
     [ApiVersion("1.1")]

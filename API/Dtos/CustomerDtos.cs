@@ -18,6 +18,9 @@ namespace API.Dtos
     public class CustumerNameDto
     {
         public string? Name { get; set; }
-
+    }
+    public class CustumerIdDto
+    {
+        public int? Id { get; set; }
     }
 }

@@ -21,6 +21,20 @@ namespace Application.Repository;
                 .Where(c => c.Address.City.State.Country.Name == country)
                 .ToListAsync();
         }
+        //. Devuelve un listado con el código de cliente de aquellos clientes que
+        // realizaron algún pago en X. Tenga en cuenta que deberá eliminar
+        // aquellos códigos de cliente que aparezcan repetidos. Resuelva la consulta:
+        // • Utilizando la función YEAR de MySQL.
+        // • Utilizando la función DATE_FORMAT de MySQL.
+        // • Sin utilizar ninguna de las funciones anteriores.
+
+        public async Task<IEnumerable<Customer>> GetIdByPaymentDate(int year)
+        {
+            return await _context.Customers
+                                .Where(c => c.Orders.Any(o => o.Payment.PaymentDate.Year == year))
+                                .Distinct()
+                                .ToListAsync();
+        }
 
 
   public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)

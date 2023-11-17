@@ -20,26 +20,45 @@ CONSULTAS
 
 1. Devuelve un listado con el nombre de los todos los clientes 
 españoles.
-
+```
+/API/customer/GetByCountry/{country}
+```
 
 2. Devuelve un listado con los distintos estados por los que puede pasar un
 pedido.
+```
+/API/Order/GetAllStatus
+```
+
 3. Devuelve un listado con el código de cliente de aquellos clientes que
 realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar
 aquellos códigos de cliente que aparezcan repetidos. Resuelva la consulta:
 • Utilizando la función YEAR de MySQL.
 • Utilizando la función DATE_FORMAT de MySQL.
 • Sin utilizar ninguna de las funciones anteriores.
+```
+/API/Customer/GetIdByPaymentDate/2009
+```
+
 9. Devuelve un listado con el código de pedido, código de cliente, fecha
 esperada y fecha de entrega de los pedidos que no han sido entregados a
 tiempo.
+
+```
+/API/Order/GetAllNotDeliveredOnTime
+```
 10. Devuelve un listado con el código de pedido, código de cliente, fecha
 esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al
 menos dos días antes de la fecha esperada.
 • Utilizando la función ADDDATE de MySQL.
 • Utilizando la función DATEDIFF de MySQL.
 • ¿Sería posible resolver esta consulta utilizando el operador de suma + o
-resta -?
+resta -? -yes
+
+```
+/API/Order/GetAllDeliveredEarlier
+```
+
 11. Devuelve un listado de todos los pedidos que fueron rechazados en 2009.
 12. Devuelve un listado de todos los pedidos que han sido entregados en el
 mes de enero de cualquier año.

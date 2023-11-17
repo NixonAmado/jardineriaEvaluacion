@@ -24,4 +24,12 @@ namespace API.Dtos
         public string Status { get; set; }
 
     }
+
+    public class EssencialOrderAtrDto
+    {
+        public int Id { get; set; }
+        public int? EmployeeId { get; set; }
+        public DateOnly ExpectedDate { get; set; }
+        public DateOnly? DeliveryDate { get; set; }
+    }
 }

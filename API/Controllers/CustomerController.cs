@@ -29,7 +29,14 @@ public class CustomerController : BaseApiController
         return _mapper.Map<List<CustumerNameDto>>(Customers);
     }
 
-    
+    [HttpGet("GetIdByPaymentDate/{year}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<CustumerIdDto>>> GetIdByPaymentDate(int year)
+    {
+        var Customers = await _unitOfWork.Customers.GetIdByPaymentDate(year);
+        return _mapper.Map<List<CustumerIdDto>>(Customers);
+    }   
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
