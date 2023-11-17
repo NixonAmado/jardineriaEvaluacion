@@ -14,7 +14,9 @@ namespace Application.Repository;
         {
             _context = context;
         }
-          public override async Task<(int totalRegistros, IEnumerable<PaymentMethod> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+        //14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+         //Por mi parte normalice los metodos de pago, así que solamente es necesario utilizar el metodo generico GetAllAsync.
+        public override async Task<(int totalRegistros, IEnumerable<PaymentMethod> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.PaymentMethods as IQueryable<PaymentMethod>;
     

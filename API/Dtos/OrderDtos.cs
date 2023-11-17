@@ -14,7 +14,7 @@ namespace API.Dtos
 
         public int? CustomerId { get; set; }
 
-        public int? PaymentId { get; set; }
+        public string? PaymentId { get; set; }
 
         public int? EmployeeId { get; set; }
 

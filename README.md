@@ -59,23 +59,38 @@ resta -? -yes
 /API/Order/GetAllDeliveredEarlier
 ```
 
-11. Devuelve un listado de todos los pedidos que fueron rechazados en 2009.
-12. Devuelve un listado de todos los pedidos que han sido entregados en el
-mes de enero de cualquier año.
+11. Devuelve un listado de todos los pedidos que fueron (X status) en X.
+```
+/API/Order/GetOrderByStatusYear/{status}/{year}
+```
+
+12. Devuelve un listado de todos los pedidos que han sido entregados en el mes de enero de cualquier año.
+```
+/API/Order/GetAllByMonth/{status}/{ej:enero}
+```
 13. Devuelve un listado con todos los pagos que se realizaron en el
-año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
-14. Devuelve un listado con todas las formas de pago que aparecen en la
-tabla pago. Tenga en cuenta que no deben aparecer formas de pago
-repetidas.
-15. Devuelve un listado con todos los productos que pertenecen a la
-gama Ornamentales y que tienen más de 100 unidades en stock. El listado
-deberá estar ordenado por su precio de venta, mostrando en primer lugar
-los de mayor precio.
-16. Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y
-cuyo representante de ventas tenga el código de empleado 11 o 30.
+año X mediante X. Ordene el resultado de mayor a menor.
+```
+API/Payment/GetByPaymentMethodYear/{PaymentMethod}/{year}
+```
+14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+Nota:Con la normalizacion de la tabla Paymenthod no fue necesario crear logica en el repo, ni controlador, solo bastó llamar al metodo generico GetAllAsync
+```
+/API/PaymentMethod
+```
+
+15. Devuelve un listado con todos los productos que pertenecen a la gama X y que tienen más de X unidades en stock. El listado
+deberá estar ordenado por su precio de venta,mostrando en primer lugar los de mayor precio.
+```
+/API/Product/GetByGamaStock/{gama}/{unidades}
+```
+16. Devuelve un listado con todos los clientes que sean de la ciudad X y cuyo representante de ventas tenga el código de empleado X o X.
 1.4.5 Consultas multitabla (Composición interna)
 Resuelva todas las consultas utilizando la sintaxis de SQL1 y SQL2. Las consultas con
 sintaxis de SQL2 se deben resolver con INNER JOIN y NATURAL JOIN.
+```
+/API/customer/GetByCityEmployee/{ciudad}/{idEmployee1}/{idEmployee2}
+```
 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su
 representante de ventas.
 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el

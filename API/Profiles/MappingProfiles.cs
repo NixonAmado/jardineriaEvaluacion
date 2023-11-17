@@ -24,6 +24,7 @@ public class MappingProfiles : Profile
         CreateMap<Office, P_OfficeDto>().ReverseMap();
         CreateMap<Order, P_OrderDto>().ReverseMap();
         CreateMap<Payment, P_PaymentDto>().ReverseMap();
+        CreateMap<Payment, PaymentDataDto>().ReverseMap();
         CreateMap<PaymentMethod, P_PaymentMethodDto>().ReverseMap();
         CreateMap<Product, P_ProductDto>().ReverseMap();
         CreateMap<ProductGama, P_ProductGamaDto>().ReverseMap();

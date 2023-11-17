@@ -14,6 +14,18 @@ namespace Application.Repository;
         {
             _context = context;
         }
+        //13. Devuelve un listado con todos los pagos que se realizaron en el año X mediante X. Ordene el resultado de mayor a menor.
+        public async Task<IEnumerable<Payment>> GetByPaymentMethodYear(string paymentMethod,int year)
+        // lo ordené de mayor a menor por el precio, ya que, no se especifica como debo ordenarlo.
+        {
+            return await _context.Payments
+                                .Include(p => p.PaymentMethod)
+                                .Where(p => p.PaymentMethod.Description.ToUpper() == paymentMethod.ToUpper() && p.PaymentDate.Year == year)
+                                .OrderByDescending(p => p.Total) 
+                                .ToListAsync(); 
+        }
+
+
           public override async Task<(int totalRegistros, IEnumerable<Payment> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Payments as IQueryable<Payment>;

@@ -52,6 +52,22 @@ public class OrderController : BaseApiController
         var Orders = await _unitOfWork.Orders.GetAllNotDeliveredOnTime();
         return _mapper.Map<List<EssencialOrderAtrDto>>(Orders);
     }    
+    [HttpGet("GetOrderByStatusYear/{status}/{year}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_OrderDto>>> GetOrderByStatusYear(string status, int year)
+    {
+        var Orders = await _unitOfWork.Orders.GetOrderByStatusYear(status, year);
+        return _mapper.Map<List<P_OrderDto>>(Orders);
+    }
+    [HttpGet("GetAllByMonth/{status}/{month}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_OrderDto>>> GetAllByMonth(string status, string month)
+    {
+        var Orders = await _unitOfWork.Orders.GetAllByMonth(status, month);
+        return _mapper.Map<List<P_OrderDto>>(Orders);
+    }    
 
     [HttpGet]
     [ApiVersion("1.1")]

@@ -16,6 +16,8 @@ namespace API.Dtos
         public decimal SalePrice { get; set; }
 
         public decimal SupplierPrice { get; set; }
+        public int StockQuantity { get; set; }
+
 
     }
 }

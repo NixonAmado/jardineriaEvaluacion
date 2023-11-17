@@ -37,6 +37,15 @@ public class CustomerController : BaseApiController
         var Customers = await _unitOfWork.Customers.GetIdByPaymentDate(year);
         return _mapper.Map<List<CustumerIdDto>>(Customers);
     }   
+    [HttpGet("GetByCityEmployee/{city}/{employeeId1}/{employeeId2}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_CustomerDto>>> GetByCityEmployee(string city, int employeeId1, int employeeId2)
+    {
+        var customers = await _unitOfWork.Customers.GetByCityEmployee(city, employeeId1, employeeId2);
+        return _mapper.Map<List<P_CustomerDto>>(customers);
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

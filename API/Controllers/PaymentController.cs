@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 [ApiVersion("1.0")]
 [ApiVersion("1.1")]
-[Authorize(Roles = "Empleado, Administrador, Gerente")]
+//[Authorize(Roles = "Empleado, Administrador, Gerente")]
 public class PaymentController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -19,7 +19,15 @@ public class PaymentController : BaseApiController
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
-    
+    [HttpGet("GetByPaymentMethodYear/{paymentMethod}/{year}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<PaymentDataDto>>> GetByPaymentMethodYear(string paymentMethod, int year)
+    {
+        var Payments = await _unitOfWork.Payments.GetByPaymentMethodYear(paymentMethod, year);
+        return _mapper.Map<List<PaymentDataDto>>(Payments);
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

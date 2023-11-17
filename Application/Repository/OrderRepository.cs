@@ -1,3 +1,4 @@
+using System.Globalization;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -41,8 +42,29 @@ public class OrderRepository : GenericRepository<Order>, IOrder
     public async Task<IEnumerable<Order>> GetAllDeliveredEarlier()
     {
         return await _context.Orders
-                .Where(o => (o.DeliveryDate.HasValue ? o.DeliveryDate.Value.Day + 2  : DateTime.MinValue.Day) <= o.ExpectedDate.Day)
+                .Where(o => (o.DeliveryDate.HasValue ? o.DeliveryDate.Value.Day + 2  : DateTime.MinValue.Day) <= o.ExpectedDate.Day &&
+                o.DeliveryDate.HasValue)
                 .ToListAsync();
+    }
+    //11. Devuelve un listado de todos los pedidos que fueron X en X.
+    public async Task<IEnumerable<Order>> GetOrderByStatusYear(string status, int year)
+    {
+        return await _context.Orders
+                .Where(o => o.Status.ToUpper() == status.ToUpper() && o.OrderDate.Year == year)
+                .ToListAsync();
+    }
+    //12. Devuelve un listado de todos los pedidos que han sido (status X) en el mes  X de cualquier año.
+    public async Task<IEnumerable<Order>> GetAllByMonth(string status, string Month)
+    {
+        //quise hacerlo de esta manera para aprender a convertir un mes string es un su respectivo int.
+        List<Order> OrdersByMonth = new();
+        if(DateOnly.TryParseExact(Month,"MMMM", CultureInfo.CurrentCulture, DateTimeStyles.None, out  DateOnly targetDate))
+        {
+            OrdersByMonth = await _context.Orders
+                .Where(o => o.Status.ToUpper() == status.ToUpper() && targetDate.Month == o.OrderDate.Month)
+                .ToListAsync();
+        }
+        return OrdersByMonth;
     }
     
     public override async Task<(int totalRegistros, IEnumerable<Order> registros)> GetAllAsync(int pageIndex, int pageSize, string search)

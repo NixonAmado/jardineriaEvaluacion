@@ -35,6 +35,14 @@ namespace Application.Repository;
                                 .Distinct()
                                 .ToListAsync();
         }
+        // 16. Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30. 1.4.5 Consultas multitabla (Composición interna) Resuelva todas las consultas utilizando la sintaxis de SQL1 y SQL2. Las consultas con sintaxis de SQL2 se deben resolver con INNER JOIN y NATURAL JOIN.
+
+        public async Task<IEnumerable<Customer>> GetByCityEmployee(string city, int employeeId1, int employeeId2)
+        {
+            return  await _context.Customers
+                                .Where(c => c.Address.City.Name.ToUpper() == city.ToUpper() && c.Orders.All(o => o.EmployeeId == employeeId1 || o.EmployeeId == employeeId2))
+                                .ToListAsync();
+        }
 
 
   public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
