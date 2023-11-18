@@ -5309,19 +5309,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\APT01-65\\.nuget\\packages\\": {}
+    "C:\\Users\\paula\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\obj\\",
+      "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -5333,11 +5333,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj"
+            "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj"
+            "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj"
             }
           }
         }
@@ -5373,7 +5373,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.311\\RuntimeIdentifierGraph.json"
       }
     }
   }

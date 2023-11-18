@@ -10,9 +10,8 @@ class OrderDetailConfiguration:IEntityTypeConfiguration<OrderDetail>
 {
     public void Configure(EntityTypeBuilder<OrderDetail> builder)
     {
-        builder
-            .HasNoKey()
-            .ToTable("order_detail");
+        builder.HasKey(od => new{od.OrderId, od.ProductId} );
+        builder.ToTable("order_detail");
 
         builder.HasIndex(e => e.OrderId, "order_id_idx");
 

@@ -42,6 +42,7 @@ builder.Services.AddDbContext<DbAppContext>(options =>
     string connectionString = builder.Configuration.GetConnectionString("ConexMysql");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
+
 var app = builder.Build();
 //app.UseMiddleware<ExceptionMiddleware>();
 
