@@ -28,6 +28,15 @@ public class ProductController : BaseApiController
         var Products = await _unitOfWork.Products.GetByGamaStock(gama, stock);
         return _mapper.Map<List<P_ProductDto>>(Products);
     }
+
+    [HttpGet("GetNeverInOrder")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_ProductDto>>> GetNeverInOrder()
+    {
+        var Products = await _unitOfWork.Products.GetNeverInOrder();
+        return _mapper.Map<List<P_ProductDto>>(Products);
+    }    
     
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]

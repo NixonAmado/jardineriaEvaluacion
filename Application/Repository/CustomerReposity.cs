@@ -145,7 +145,29 @@ namespace Application.Repository;
                                 })
                                 .ToListAsync();
         }
-        
+        //7. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+        public async Task<IEnumerable<Customer>> GetNameNoDeliveryOnTime()
+        {
+           return await _context.Customers
+                                .Where(c => c.Orders.Any(o => o.DeliveryDate > o.ExpectedDate))                                
+                                .ToListAsync();
+        }
+        //1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+        public async Task<IEnumerable<Customer>> GetByOrderNotPaid()
+        {
+           return await _context.Customers
+                                .Where(c => c.Orders.Any(o => o.PaymentId == null))                                
+                                .ToListAsync();
+        }  
+        //2. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
+        public async Task<IEnumerable<Customer>> GetByNotPaidAndNotOrder()
+        {
+            //En este caso, con la normalización se redirecciono pedido para que este vinculado con la orden directamente, entoces, si un cliente no tiene asociada una order, tampoco un pago.
+           return await _context.Customers
+                                .Where(c => !c.Orders.Any())
+                                .ToListAsync();
+         
+        }     
         public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Customers as IQueryable<Customer>;

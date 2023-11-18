@@ -21,8 +21,9 @@ public class MappingProfiles : Profile
         CreateMap<Customer, CustumerIdDto>().ReverseMap();
         CreateMap<Customer, CustumerNameDto>().ReverseMap();
         CreateMap<Employee, P_EmployeeDto>().ReverseMap();
-
+        CreateMap<Employee, EmployeeOfficeDto>().ReverseMap();
         CreateMap<Office, P_OfficeDto>().ReverseMap();
+        CreateMap<Office, EssencialOfficeDto>().ReverseMap();
         CreateMap<Order, P_OrderDto>().ReverseMap();
         CreateMap<Payment, P_PaymentDto>().ReverseMap();
         CreateMap<Payment, PaymentDataDto>().ReverseMap();

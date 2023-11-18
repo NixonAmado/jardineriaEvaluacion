@@ -24,6 +24,15 @@ namespace Application.Repository;
                                 .OrderByDescending(p => p.SalePrice)
                                 .ToListAsync();
         }
+
+        //5. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+        public async Task<IEnumerable<Product>> GetNeverInOrder()
+        {
+            return await _context.Products
+                                .Where(p => !p.OrderDetails.Any())
+                                .ToListAsync();
+        }
+        
         public override async Task<(int totalRegistros, IEnumerable<Product> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Products as IQueryable<Product>;

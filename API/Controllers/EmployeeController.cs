@@ -29,6 +29,23 @@ public class EmployeeController : BaseApiController
         return _mapper.Map<List<P_EmployeeDto>>(Employees);
     }
 
+    [HttpGet("GetNameAndBossChief")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetNameAndBossChief()
+    {
+        var Employees = await _unitOfWork.Employees.GetNameAndBossChief();
+        return _mapper.Map<List<object>>(Employees);
+    }
+    
+    [HttpGet("GetNotAssoEmployeeAndOffice")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_EmployeeDto>>> GetNotAssociatedEmployeeAndOffice()
+    {
+        var Employees = await _unitOfWork.Employees.GetNotAssociatedEmployeeAndOffice();
+        return _mapper.Map<List<P_EmployeeDto>>(Employees);
+    }
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

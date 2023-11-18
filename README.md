@@ -116,25 +116,48 @@ de sus representantes junto con la ciudad de la oficina a la que pertenece el re
 ```
 /API/customer/GetByOrderNotPaymentEmployeeCity
 ```
-6. Devuelve un listado que muestre el nombre de cada empleados, el nombre
+6. Devuelve un listado que muestre el nombre de cada empleado, el nombre
 de su jefe y el nombre del jefe de su jefe.
+```
+/API/employee/GetNameAndBossChief
+```
 7. Devuelve el nombre de los clientes a los que no se les ha entregado a
 tiempo un pedido.
+```
+/API/customer/GetNameNoDeliveryOnTime
+```
 8. Devuelve un listado de las diferentes gamas de producto que ha comprado
 cada cliente.
+
+
 1.4.6 Consultas multitabla (Composición externa)
 Resuelva todas las consultas utilizando las cláusulas LEFT JOIN, RIGHT JOIN, NATURAL
 LEFT JOIN y NATURAL RIGHT JOIN.
+```
+/API/productGama/GetByProductGama
+```
+
 1. Devuelve un listado que muestre solamente los clientes que no han
 realizado ningún pago.
-2. Devuelve un listado que muestre los clientes que no han realizado ningún
-pago y los que no han realizado ningún pedido.
+```
+/API/customer/GetByOrderNotPaid
+```
+2. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
+```
+/API/customer/GetByNotPaidAndNotOrder
+```
 3. Devuelve un listado que muestre solamente los empleados que no tienen un
 cliente asociado junto con los datos de la oficina donde trabajan.
-4. Devuelve un listado que muestre los empleados que no tienen una oficina
-asociada y los que no tienen un cliente asociado.
-5. Devuelve un listado de los productos que nunca han aparecido en un
-pedido.
+```
+/API/Employee/GetNotAssociatedEmployeeOffice
+```
+4. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado.
+```
+/API/Employee/GetNotAssoEmployeeAndOffice
+```
+5. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+
+
 6. Devuelve un listado de los productos que nunca han aparecido en un
 pedido. El resultado debe mostrar el nombre, la descripción y la imagen del
 producto.

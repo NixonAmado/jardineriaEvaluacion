@@ -96,6 +96,34 @@ public class CustomerController : BaseApiController
         var Customers = await _unitOfWork.Customers.GetByOrderPaymentEmployee();
         return Ok(Customers);
     }
+
+    [HttpGet("GetNameNoDeliveryOnTime")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<CustumerNameDto>>> GetNameNoDeliveryOnTime()
+    {
+        var Custumers = await _unitOfWork.Customers.GetNameNoDeliveryOnTime();
+         return _mapper.Map<List<CustumerNameDto>>(Custumers);
+    }
+
+    [HttpGet("GetByOrderNotPaid")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_CustomerDto>>> GetByOrderNotPaid()
+    {
+        var Custumers = await _unitOfWork.Customers.GetByOrderNotPaid();
+         return _mapper.Map<List<P_CustomerDto>>(Custumers);
+    }
+    
+    [HttpGet("GetByNotPaidAndNotOrder")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_CustomerDto>>> GetByNotPaidAndNotOrder()
+    {
+        var Custumers = await _unitOfWork.Customers.GetByNotPaidAndNotOrder();
+         return _mapper.Map<List<P_CustomerDto>>(Custumers);
+    }
+    
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

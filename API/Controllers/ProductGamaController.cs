@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 [ApiVersion("1.0")]
 [ApiVersion("1.1")]
-[Authorize(Roles = "Empleado, Administrador, Gerente")]
+//[Authorize(Roles = "Empleado, Administrador, Gerente")]
 public class ProductGamaController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -19,7 +19,15 @@ public class ProductGamaController : BaseApiController
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
-    
+    [HttpGet("GetByProductGama")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByProductGama()
+    {
+        var ProductGamas = await _unitOfWork.ProductGamas.GetByProductGama();
+        return _mapper.Map<List<object>>(ProductGamas);
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

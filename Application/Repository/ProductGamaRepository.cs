@@ -14,6 +14,15 @@ namespace Application.Repository;
         {
             _context = context;
         }
+        //8. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente. 1.4.6 Consultas multitabla (Composición externa) Resuelva todas las consultas utilizando las cláusulas LEFT JOIN, RIGHT JOIN, NATURAL LEFT JOIN y NATURAL RIGHT JOIN.
+        public async Task<IEnumerable<object>> GetByProductGama()
+        {
+            return await _context.Products
+                                .Include(p => p.GamaNavigation)
+                                .Select(p => new{ProductGama = p.GamaNavigation.Gama})
+                                .Distinct()
+                                .ToListAsync();
+        }
           public override async Task<(int totalRegistros, IEnumerable<ProductGama> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.ProductGamas as IQueryable<ProductGama>;

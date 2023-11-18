@@ -17,4 +17,14 @@ namespace API.Dtos
         public string JobTitle { get; set; } 
     
     }
+
+        public class EmployeeOfficeDto
+    {
+        public string Name { get; set; } 
+    
+        public string LastName1 { get; set; } 
+    
+        public string JobTitle { get; set; } 
+        public EssencialOfficeDto Office {get;set;}    
+    }
 }
