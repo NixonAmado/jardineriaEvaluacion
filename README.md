@@ -359,3 +359,6 @@ está su oficina.
 ```
 5. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos
 empleados que no sean representante de ventas de ningún cliente
+```
+/API/employee/GetDataByJobTitle
+```
