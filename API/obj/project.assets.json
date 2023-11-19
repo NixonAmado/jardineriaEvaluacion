@@ -6252,6 +6252,7 @@
       "Microsoft.AspNetCore.Authorization >= 7.0.12",
       "Microsoft.AspNetCore.Mvc.Versioning >= 5.1.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.10",
+      "Microsoft.EntityFrameworkCore.Analyzers >= 7.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.11",
       "Microsoft.OpenApi >= 1.6.8",
       "Serilog >= 3.0.1",
@@ -6261,33 +6262,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\paula\\.nuget\\packages\\": {}
+    "C:\\Users\\AIO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\api\\API.csproj",
+      "projectUniqueName": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\api\\API.csproj",
-      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\api\\obj\\",
+      "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files\\dotnet\\sdk\\7.0.311\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\paula\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj"
+            "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj"
             }
           }
         }
@@ -6330,6 +6330,10 @@
             "target": "Package",
             "version": "[7.0.10, )"
           },
+          "Microsoft.EntityFrameworkCore.Analyzers": {
+            "target": "Package",
+            "version": "[7.0.11, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -6368,6 +6372,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6376,7 +6398,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.311\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

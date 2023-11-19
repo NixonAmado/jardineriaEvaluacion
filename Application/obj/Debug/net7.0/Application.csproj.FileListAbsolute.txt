@@ -83,3 +83,4 @@ C:\Users\AIO\Desktop\jardineriaEvaluacion\Application\obj\Debug\net7.0\Applicati
 C:\Users\AIO\Desktop\jardineriaEvaluacion\Application\obj\Debug\net7.0\refint\Application.dll
 C:\Users\AIO\Desktop\jardineriaEvaluacion\Application\obj\Debug\net7.0\Application.pdb
 C:\Users\AIO\Desktop\jardineriaEvaluacion\Application\obj\Debug\net7.0\ref\Application.dll
+C:\Users\AIO\Desktop\jardineriaEvaluacion\Application\obj\Debug\net7.0\Application.sourcelink.json

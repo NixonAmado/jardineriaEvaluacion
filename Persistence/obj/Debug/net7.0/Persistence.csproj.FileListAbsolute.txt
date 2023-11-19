@@ -73,3 +73,4 @@ C:\Users\AIO\Desktop\jardineriaEvaluacion\Persistence\obj\Debug\net7.0\Persisten
 C:\Users\AIO\Desktop\jardineriaEvaluacion\Persistence\obj\Debug\net7.0\refint\Persistence.dll
 C:\Users\AIO\Desktop\jardineriaEvaluacion\Persistence\obj\Debug\net7.0\Persistence.pdb
 C:\Users\AIO\Desktop\jardineriaEvaluacion\Persistence\obj\Debug\net7.0\ref\Persistence.dll
+C:\Users\AIO\Desktop\jardineriaEvaluacion\Persistence\obj\Debug\net7.0\Persistence.sourcelink.json

@@ -46,6 +46,34 @@ public class EmployeeController : BaseApiController
         var Employees = await _unitOfWork.Employees.GetNotAssociatedEmployeeAndOffice();
         return _mapper.Map<List<P_EmployeeDto>>(Employees);
     }
+
+    [HttpGet("GetNotAssoCustomerBossName")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<EmployeeBossDto>>> GetNotAssociatedcustomerBossName()
+    {
+        var Employees = await _unitOfWork.Employees.GetNotAssociatedcustomerBossName();
+        return _mapper.Map<List<EmployeeBossDto>>(Employees);
+    }
+
+    [HttpGet("GetEmployeesQuantity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetEmployeesQuantity()
+    {
+        var Employees = await _unitOfWork.Employees.GetEmployeesQuantity();
+        return Ok(Employees);
+    }
+
+    [HttpGet("GetEmployeesCustomerQuantity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetEmployeesCustomerQuantity()
+    {
+        var Employees = await _unitOfWork.Employees.GetEmployeesCustomerQuantity();
+        return Ok(Employees);
+    }
+
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

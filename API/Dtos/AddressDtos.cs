@@ -10,6 +10,6 @@ namespace API.Dtos
     public string AddressLine2 { get; set; } = null!;
 
     public string PostalCode { get; set; } = null!;
-    public virtual Country? Country { get; set; }
+    public virtual P_CountryDto? Country { get; set; }
     }
 }

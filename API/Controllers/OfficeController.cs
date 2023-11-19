@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 [ApiVersion("1.0")]
 [ApiVersion("1.1")]
-[Authorize(Roles = "Empleado, Administrador, Gerente")]
+//[Authorize(Roles = "Empleado, Administrador, Gerente")]
 public class OfficeController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -19,6 +19,15 @@ public class OfficeController : BaseApiController
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
+
+    [HttpGet("GetByEmployeeWithProductGama/{gama}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<EssencialOfficeDto>>> GetByEmployeeWithProductGama(string gama)
+    {
+        var Offices = await _unitOfWork.Offices.GetByEmployeeWithProductGama(gama);
+        return _mapper.Map<List<EssencialOfficeDto>>(Offices);
+    }    
     
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]

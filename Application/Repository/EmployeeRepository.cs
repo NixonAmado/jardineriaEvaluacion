@@ -14,7 +14,6 @@ namespace Application.Repository;
         {
             _context = context;
         }
-
         //6. Devuelve un listado que muestre el nombre de cada empleado, el nombre de su jefe y el nombre del jefe de su jefe.
         public async Task<IEnumerable<object>> GetNameAndBossChief()
         {
@@ -28,7 +27,6 @@ namespace Application.Repository;
                                 })
                                 .ToListAsync();
         }
-                  
         //3. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado junto con los datos de la oficina donde trabajan
 
         public async Task<IEnumerable<Employee>> GetNotAssociatedEmployeeOffice()
@@ -49,9 +47,33 @@ namespace Application.Repository;
                                 .Where(e => e.OfficeId == null || !e.Orders.Any()).ToListAsync();
         }
         
+        //9. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
+        public async Task<IEnumerable<Employee>> GetNotAssociatedcustomerBossName()
+        {
+            return await _context.Employees
+                                .Include(e => e.Boss)
+                                .Where(e => !e.Orders.Any())
+                                .ToListAsync();
+        }
+        //1. ¿Cuántos empleados hay en la compañía?
+        public async Task<object> GetEmployeesQuantity()
+        {
+            return new { EmployeesQuantity = await _context.Employees.CountAsync()};
+        }
+        //7. Devuelve el nombre de los representantes de ventas y el número de clientes
+        public async Task<IEnumerable<object>> GetEmployeesCustomerQuantity()
+        {
+            return await _context.Employees
+                                .Where(e => e.JobTitle == "REPRESENTANTE VENTAS")
+                                .GroupBy(e => e.Orders.FirstOrDefault().CustomerId)
+                                .Select(g => new{
+                                    g.FirstOrDefault().Name,
+                                    customersAsociated = g.Count()
+                                }).ToListAsync();
+        }
+        
 
-
-          public override async Task<(int totalRegistros, IEnumerable<Employee> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+        public override async Task<(int totalRegistros, IEnumerable<Employee> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Employees as IQueryable<Employee>;
     

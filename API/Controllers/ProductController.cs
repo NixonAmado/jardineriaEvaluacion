@@ -36,8 +36,16 @@ public class ProductController : BaseApiController
     {
         var Products = await _unitOfWork.Products.GetNeverInOrder();
         return _mapper.Map<List<P_ProductDto>>(Products);
-    }    
-    
+    }   
+
+    [HttpGet("GetNeverInOrderspecified")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetNeverInOrderspecified()
+    {
+        var Products = await _unitOfWork.Products.GetNeverInOrderspecified();
+        return _mapper.Map<List<object>>(Products);
+    }     
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

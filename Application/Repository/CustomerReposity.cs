@@ -153,6 +153,9 @@ namespace Application.Repository;
                                 .ToListAsync();
         }
         //1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+
+        //8. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
+        
         public async Task<IEnumerable<Customer>> GetByOrderNotPaid()
         {
            return await _context.Customers
@@ -167,7 +170,39 @@ namespace Application.Repository;
                                 .Where(c => !c.Orders.Any())
                                 .ToListAsync();
          
-        }     
+        }
+
+        //5. ¿Cuántos clientes existen con domicilio en la ciudad de Madrid?
+        public async Task<object> GetByCustomerQuantityInCity(string city)
+        {
+            return  new {customerQuantity = await _context.Customers.Where(c => c.Address.City.Name.ToUpper() == city.ToUpper()).CountAsync()};
+        }
+        //6. ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan por M?
+        public async Task<object> GetByCustomerQuantityInLetterCity(string letter)
+        {
+            return  new {customerQuantity = await _context.Customers
+            .Where(c => c.Address.City.Name.ToUpper().StartsWith(letter.ToUpper())).CountAsync()};
+        }
+        //8. Calcula el número de clientes que no tiene asignado representante de ventas.
+        public async Task<object> GetByNotAssignedEmployee()
+        {
+            //tabla normalizada
+            //asumiendo que un cliente no puede hacer un pedido sin un empleado asosiado
+            //si el cliente no tiene pedido, no tiene un empleado
+        return new { CustomerQuantity = await _context.Customers.Where(c => !c.Orders.Any()).CountAsync()};
+        }
+        //9. Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado deberá mostrar el nombre y los apellidos de cada cliente.
+        public async Task<IEnumerable<object>> GetFirstLastPaymentByCustomer()
+        {
+            return await _context.Customers
+                                .Where(c => c.Orders.Any(o => o.PaymentId != null))
+                                .Select( c => new{
+                                    firstPayment = c.Orders.Min(o => o.Payment.PaymentDate),
+                                    LastPayment = c.Orders.Max(o => o.Payment.PaymentDate),
+                                    c.Name,
+                                    lastName = c.ContactName + " " + c.ContactLastName
+                                }).ToListAsync();
+        }
         public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Customers as IQueryable<Customer>;

@@ -261,6 +261,7 @@ C:\Users\AIO\Documents\c#\jardineriaEvaluacion\API\obj\Debug\net7.0\API.pdb
 C:\Users\AIO\Documents\c#\jardineriaEvaluacion\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\AIO\Documents\c#\jardineriaEvaluacion\API\obj\Debug\net7.0\ref\API.dll
 C:\Users\APT01-65\Documents\jardineriaEvaluacion\api\bin\Debug\net7.0\MoreLinq.dll
+C:\Users\paula\Desktop\jardineriaEvaluacion\API\bin\Debug\net7.0\MoreLinq.dll
 C:\Users\AIO\Desktop\jardineriaEvaluacion\API\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\AIO\Desktop\jardineriaEvaluacion\API\bin\Debug\net7.0\appsettings.json
 C:\Users\AIO\Desktop\jardineriaEvaluacion\API\bin\Debug\net7.0\API.exe
@@ -347,4 +348,4 @@ C:\Users\AIO\Desktop\jardineriaEvaluacion\API\obj\Debug\net7.0\refint\API.dll
 C:\Users\AIO\Desktop\jardineriaEvaluacion\API\obj\Debug\net7.0\API.pdb
 C:\Users\AIO\Desktop\jardineriaEvaluacion\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\AIO\Desktop\jardineriaEvaluacion\API\obj\Debug\net7.0\ref\API.dll
-C:\Users\paula\Desktop\jardineriaEvaluacion\API\bin\Debug\net7.0\MoreLinq.dll
+C:\Users\AIO\Desktop\jardineriaEvaluacion\api\obj\Debug\net7.0\API.sourcelink.json

@@ -69,6 +69,79 @@ public class OrderController : BaseApiController
         return _mapper.Map<List<P_OrderDto>>(Orders);
     }    
 
+    [HttpGet("GetOrderPaymentAverangeInYear/{year}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetOrderPaymentAverangeInYear( int year)
+    {
+        var Orders = await _unitOfWork.Orders.GetOrderPaymentAverangeInYear(year);
+        return Ok(Orders);
+    }
+    
+    [HttpGet("GetOrdersQuantityByStatus")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<object>> GetOrdersQuantityByStatus()
+    {
+        var Orders = await _unitOfWork.Orders.GetOrdersQuantityByStatus();
+        return Ok(Orders);
+    }
+    
+    [HttpGet("GetByDifferentProdQuantity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<object>> GetByDifferentProdQuantity()
+    {
+        var Orders = await _unitOfWork.Orders.GetByDifferentProdQuantity();
+        return Ok(Orders);
+    }
+
+    [HttpGet("GetTotalSumProdInOrder")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<object>> GetTotalSumProdInOrder()
+    {
+        var Orders = await _unitOfWork.Orders.GetTotalSumProdInOrder();
+        return Ok(Orders);
+    }
+
+    [HttpGet("GetMostSold")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetMostSold()
+    {
+        var Orders = await _unitOfWork.Orders.GetMostSold();
+        return Ok(Orders);
+    }
+
+    [HttpGet("GetMostSoldGroupedByCod")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetMostSoldGroupedByCod()
+    {
+        var Orders = await _unitOfWork.Orders.GetMostSoldGroupedByCod();
+        return Ok(Orders);
+    }
+
+
+    [HttpGet("GetMostSoldGroupedByCodFiltered/{letters}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetMostSoldGroupedByCodFiltered(string letters)
+    {
+        var Orders = await _unitOfWork.Orders.GetMostSoldGroupedByCodFiltered(letters);
+        return Ok(Orders);
+    }   
+    
+    [HttpGet("GetTotalSaleByQuantityRange/{range}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetTotalSaleByQuantityRange(int range)
+    {
+        var Orders = await _unitOfWork.Orders.GetTotalSaleByQuantityRange(range);
+        return Ok(Orders);
+    }
+
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

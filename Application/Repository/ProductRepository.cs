@@ -32,7 +32,18 @@ namespace Application.Repository;
                                 .Where(p => !p.OrderDetails.Any())
                                 .ToListAsync();
         }
-        
+        //6. Devuelve un listado de los productos que nunca han aparecido en un pedido. El resultado debe mostrar el nombre, la descripción y la imagen del producto.
+        public async Task<IEnumerable<object>> GetNeverInOrderspecified()
+        {
+            return await _context.Products
+                                .Where(p => !p.OrderDetails.Any())
+                                .Select(p => new{
+                                    p.Name,
+                                    p.Description,
+                                    p.GamaNavigation.Image
+                                }).ToListAsync();
+        }
+
         public override async Task<(int totalRegistros, IEnumerable<Product> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Products as IQueryable<Product>;

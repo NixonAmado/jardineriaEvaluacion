@@ -97,6 +97,39 @@ public class CustomerController : BaseApiController
         return Ok(Customers);
     }
 
+    [HttpGet("GetByNotAssignedEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<object>> GetByNotAssignedEmployee()
+    {
+        var Customers = await _unitOfWork.Customers.GetByNotAssignedEmployee();
+        return Ok(Customers);
+    }
+
+    [HttpGet("GetByCustomerQuantityInCity/{city}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByCustomerQuantityInCity(string city)
+    {
+        var Customers = await _unitOfWork.Customers.GetByCustomerQuantityInCity(city);
+        return Ok(Customers);
+    }
+    [HttpGet("GetByCustomerQuantityInLetterCity/{letter}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByCustomerQuantityInLetterCity(string letter)
+    {
+        var Customers = await _unitOfWork.Customers.GetByCustomerQuantityInLetterCity(letter);
+        return Ok(Customers);
+    }
+    [HttpGet("GetFirstLastPaymentByCustomer")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetFirstLastPaymentByCustomer()
+    {
+        var Customers = await _unitOfWork.Customers.GetFirstLastPaymentByCustomer();
+        return Ok(Customers);
+    }    
     [HttpGet("GetNameNoDeliveryOnTime")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

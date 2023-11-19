@@ -14,6 +14,21 @@ namespace Application.Repository;
         {
             _context = context;
         }
+                //2. ¿Cuántos clientes tiene cada país?
+        public async Task<IEnumerable<object>> GetCustomersQuantityByCountry()
+        {
+            return await _context.Countries
+                                .Select(c => new{
+                                    c.Name,
+                                    CustomersQuantity = 
+                                    c.States.SelectMany(s => s.Cities
+                                            .SelectMany(c => c.Addresses
+                                            .Select(a => a.Customers.Count)
+                                            )).Sum()
+                                })
+                                .ToListAsync();
+         
+        }
     public override async Task<(int totalRegistros, IEnumerable<Country> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Countries as IQueryable<Country>;

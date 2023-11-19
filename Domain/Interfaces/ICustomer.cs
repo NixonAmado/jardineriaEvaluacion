@@ -14,4 +14,8 @@ public interface ICustomer : IGenericRepository<Customer>
     Task<IEnumerable<Customer>> GetNameNoDeliveryOnTime();
     Task<IEnumerable<Customer>> GetByOrderNotPaid();
     Task<IEnumerable<Customer>> GetByNotPaidAndNotOrder();
+    Task<object> GetByCustomerQuantityInCity(string city);
+    Task<object> GetByCustomerQuantityInLetterCity(string letter);
+    Task<object> GetByNotAssignedEmployee();
+    Task<IEnumerable<object>> GetFirstLastPaymentByCustomer();
 }

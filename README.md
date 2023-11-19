@@ -156,47 +156,98 @@ cliente asociado junto con los datos de la oficina donde trabajan.
 /API/Employee/GetNotAssoEmployeeAndOffice
 ```
 5. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+```
+/API/product/GetNeverInOrder
+```
+6. Devuelve un listado de los productos que nunca han aparecido en un pedido. El resultado debe mostrar el nombre, la descripción y la imagen del producto.
+```
+/API/product/GetNeverInOrderspecified
+```
+7. Devuelve las oficinas donde no trabajan ninguno de los empleados que hayan sido los representantes de ventas de algún cliente que haya realizado la compra de algún producto de la gama X.
 
+```
+/API/office/GetByEmployeeWithProductGama/{gama}
+```
 
-6. Devuelve un listado de los productos que nunca han aparecido en un
-pedido. El resultado debe mostrar el nombre, la descripción y la imagen del
-producto.
-7. Devuelve las oficinas donde no trabajan ninguno de los empleados que
-hayan sido los representantes de ventas de algún cliente que haya realizado
-la compra de algún producto de la gama Frutales.
-8. Devuelve un listado con los clientes que han realizado algún pedido pero no
-han realizado ningún pago.
-9. Devuelve un listado con los datos de los empleados que no tienen clientes
-asociados y el nombre de su jefe asociado.
+8. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
+Se reutiliza el metodo del enpoint (1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago) ya que en la normalización se liga el pago a la orden, y sin orden no hay pago.
+```
+/API/customer/GetByOrderNotPaid
+```
+
+9. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
+```
+/API/employee/GetNotAssoCustomerBossName
+```
 1.4.7 Consultas resumen
 1. ¿Cuántos empleados hay en la compañía?
+```
+/API/employee/GetEmployeesQuantity
+```
 2. ¿Cuántos clientes tiene cada país?
-3. ¿Cuál fue el pago medio en 2009?
+```
+/API/country/GetCustomersQuantityByCountry
+```
+3. ¿Cuál fue el pago medio en X año?
+```
+/API/order/GetOrderPaymentAverangeInYear/{year}
+```
 4. ¿Cuántos pedidos hay en cada estado? Ordena el resultado de forma
 descendente por el número de pedidos.
+```
+/API/order/GetOrdersQuantityByStatus
+```
 5. ¿Cuántos clientes existen con domicilio en la ciudad de Madrid?
-6. ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan
-por M?
-7. Devuelve el nombre de los representantes de ventas y el número de clientes
-al que atiende cada uno.
+```
+/API/customer/GetByCustomerQuantityInCity/madrid city
+```
+6. ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan por X?
+```
+/API/customer/GetByCustomerQuantityInLetterCity/{letter}
+```
+7. Devuelve el nombre de los representantes de ventas y el número de clientes al que atiende cada uno.
+```
+/API/employee/GetEmployeesCustomerQuantity
+```
 8. Calcula el número de clientes que no tiene asignado representante de
 ventas.
-9. Calcula la fecha del primer y último pago realizado por cada uno de los
-clientes. El listado deberá mostrar el nombre y los apellidos de cada cliente.
-10. Calcula el número de productos diferentes que hay en cada uno de los
-pedidos.
+```
+/API/customer/GetByNotAssignedEmployee
+```
+9. Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado deberá mostrar el nombre y los apellidos de cada cliente.
+```
+/API/customer/GetFirstLastPaymentByCustomer
+```
+10. Calcula el número de productos diferentes que hay en cada uno de los pedidos.
+```
+/API/order/GetByDifferentProdQuantity
+```
 11. Calcula la suma de la cantidad total de todos los productos que aparecen en
 cada uno de los pedidos.
-12. Devuelve un listado de los 20 productos más vendidos y el número total de
-unidades que se han vendido de cada uno. El listado deberá estar ordenado
-por el número total de unidades vendidas.
+```
+/API/order/GetTotalSumProdInOrder
+```
+12. Devuelve un listado de los 20 productos más vendidos y el número total de unidades que se han vendido de cada uno. El listado deberá estar ordenado por el número total de unidades vendidas.
+```
+/API/order/GetMostSold
+```
 13. La misma información que en la pregunta anterior, pero agrupada por
 código de producto.
+```
+/API/order/GetMostSoldGroupedByCod
+```
 14. La misma información que en la pregunta anterior, pero agrupada por
-código de producto filtrada por los códigos que empiecen por OR.
-15. Lista las ventas totales de los productos que hayan facturado más de 3000
+código de producto filtrada por los códigos que empiecen por X.
+```
+/API/order/GetMostSoldGroupedByCodFiltered/OR
+```
+15. Lista las ventas totales de los productos que hayan facturado más de X
 euros. Se mostrará el nombre, unidades vendidas, total facturado y total
 facturado con impuestos (21% IVA).
+```
+/API/order/GetTotalSaleByQuantityRange/{range}
+```
+
 16. Muestre la suma total de todos los pagos que se realizaron para cada uno
 de los años que aparecen en la tabla pagos.
 1.4.8 Subconsultas

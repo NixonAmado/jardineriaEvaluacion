@@ -22,6 +22,9 @@ public class MappingProfiles : Profile
         CreateMap<Customer, CustumerNameDto>().ReverseMap();
         CreateMap<Employee, P_EmployeeDto>().ReverseMap();
         CreateMap<Employee, EmployeeOfficeDto>().ReverseMap();
+        CreateMap<Employee, EmployeeBossDto>().ReverseMap();
+        CreateMap<Employee, EmployeeNameDto>().ReverseMap();
+
         CreateMap<Office, P_OfficeDto>().ReverseMap();
         CreateMap<Office, EssencialOfficeDto>().ReverseMap();
         CreateMap<Order, P_OrderDto>().ReverseMap();

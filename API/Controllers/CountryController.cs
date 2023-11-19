@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 [ApiVersion("1.0")]
 [ApiVersion("1.1")]
-[Authorize(Roles = "Empleado, Administrador, Gerente")]
+//[Authorize(Roles = "Empleado, Administrador, Gerente")]
 public class CountryController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -19,7 +19,15 @@ public class CountryController : BaseApiController
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
-    
+    [HttpGet("GetCustomersQuantityByCountry")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetCustomersQuantityByCountry()
+    {
+        var Countries = await _unitOfWork.Countries.GetCustomersQuantityByCountry();
+        return Ok(Countries);
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
