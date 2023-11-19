@@ -43,7 +43,38 @@ namespace Application.Repository;
                                     p.GamaNavigation.Image
                                 }).ToListAsync();
         }
+        //2. Devuelve el nombre del producto que tenga el precio de venta más caro.
+        public async Task<Product> GetByHigherSalesPrice()
+        {
+            return await _context.Products
+                                .OrderByDescending(p => p.SalePrice)
+                                .FirstOrDefaultAsync();
+        }
+        //3. Devuelve el nombre del producto del que se han vendido más unidades.
+        //(Tenga en cuenta que tendrá que calcular cuál es el número total de unidades que se han vendido de cada producto a partir de los datos de la tabla detalle_pedido)
 
+        public async Task<object> GetByHigherUnitsPrice()
+        {
+            return await _context.OrderDetails
+                                .GroupBy( od => od.ProductId)
+                                .Select(g => new
+                                {
+                                    g.FirstOrDefault().Product.Name,
+                                    TotalUnits = g.Sum(od => Convert.ToInt32(od.Cantidad))
+                                })
+                                .OrderByDescending(p => p.TotalUnits)
+                                .FirstOrDefaultAsync();
+        }
+        //13. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+        public async Task<IEnumerable<Product>> GetByNotInOrder()
+        {
+            return await _context.Products
+                                .Where(p => !p.OrderDetails.Any())
+                                .ToListAsync();
+        }
+        
+
+        
         public override async Task<(int totalRegistros, IEnumerable<Product> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Products as IQueryable<Product>;

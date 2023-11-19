@@ -44,9 +44,7 @@ class ProductConfiguration:IEntityTypeConfiguration<Product>
         builder.HasOne(d => d.GamaNavigation).WithMany(p => p.Products)
             .HasForeignKey(d => d.Gama)
             .HasConstraintName("gama");       
-        // builder.HasMany(o => o.OrderDetails)
-        // .WithOne(d => d.Order)
-        // .HasForeignKey(d => d.OrderId);
+
 
     }
 }  

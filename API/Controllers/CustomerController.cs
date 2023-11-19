@@ -130,13 +130,30 @@ public class CustomerController : BaseApiController
         var Customers = await _unitOfWork.Customers.GetFirstLastPaymentByCustomer();
         return Ok(Customers);
     }    
+    [HttpGet("GetByGreatestCreditLimit")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<CustumerNameDto>> GetByGreatestCreditLimit()
+    {        
+        var Customers = await _unitOfWork.Customers.GetByGreatestCreditLimit();
+        return _mapper.Map<CustumerNameDto>(Customers);
+    }    
     [HttpGet("GetNameNoDeliveryOnTime")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IEnumerable<CustumerNameDto>>> GetNameNoDeliveryOnTime()
     {
         var Custumers = await _unitOfWork.Customers.GetNameNoDeliveryOnTime();
-         return _mapper.Map<List<CustumerNameDto>>(Custumers);
+        return _mapper.Map<List<CustumerNameDto>>(Custumers);
+    }
+
+    [HttpGet("GetByHigherCreditLimitThanPayment")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_CustomerDto>>> GetByHigherCreditLimitThanPayment()
+    {
+        var Custumers = await _unitOfWork.Customers.GetByHigherCreditLimitThanPayment();
+        return _mapper.Map<List<P_CustomerDto>>(Custumers);
     }
 
     [HttpGet("GetByOrderNotPaid")]
@@ -154,9 +171,59 @@ public class CustomerController : BaseApiController
     public async Task<ActionResult<IEnumerable<P_CustomerDto>>> GetByNotPaidAndNotOrder()
     {
         var Custumers = await _unitOfWork.Customers.GetByNotPaidAndNotOrder();
-         return _mapper.Map<List<P_CustomerDto>>(Custumers);
+        return _mapper.Map<List<P_CustomerDto>>(Custumers);
+    }
+    [HttpGet("GetByNotOrder")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_CustomerDto>>> GetByNotOrder()
+    {
+        var Custumers = await _unitOfWork.Customers.GetByNotOrder();
+        return _mapper.Map<List<P_CustomerDto>>(Custumers);
+    }
+    [HttpGet("GetByOrderPaid")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<P_CustomerDto>>> GetByOrderPaid()
+    {
+        var Custumers = await _unitOfWork.Customers.GetByOrderPaid();
+        return _mapper.Map<List<P_CustomerDto>>(Custumers);
     }
     
+    [HttpGet("GetNameAndOrdersQuantity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetNameAndOrdersQuantity()
+    {
+        var Custumers = await _unitOfWork.Customers.GetNameAndOrdersQuantity();
+        return Ok(Custumers);
+    }
+    
+    [HttpGet("GetByOrderInYear/{year}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<CustumerNameDto>>> GetByOrderInYear(int year)
+    {
+        var Custumers = await _unitOfWork.Customers.GetByOrderInYear(year);
+        return _mapper.Map<List<CustumerNameDto>>(Custumers);
+    }
+    
+    [HttpGet("GetDataAndEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetDataAndEmployee()
+    {
+        var Customer = await _unitOfWork.Customers.GetDataAndEmployee();
+        return Ok(Customer);
+    }
+    [HttpGet("GetDataAndEmployeeCity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetDataAndEmployeeCity()
+    {
+        var Customer = await _unitOfWork.Customers.GetDataAndEmployeeCity();
+        return Ok(Customer);
+    }
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

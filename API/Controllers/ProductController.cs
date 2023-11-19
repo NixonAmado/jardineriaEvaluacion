@@ -55,6 +55,31 @@ public class ProductController : BaseApiController
         return _mapper.Map<List<P_ProductDto>>(Products);
     }
 
+    [HttpGet("GetByHigherSalesPrice")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<ProductNameDto>> GetByHigherSalesPrice()
+    {
+        var Products = await _unitOfWork.Products.GetByHigherSalesPrice();
+        return _mapper.Map<ProductNameDto>(Products);
+    }     
+
+    [HttpGet("GetByHigherUnitsPrice")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<object>> GetByHigherUnitsPrice()
+    {
+        var Products = await _unitOfWork.Products.GetByHigherUnitsPrice();
+        return Ok(Products);
+    }     
+    [HttpGet("GetByNotInOrder")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<object>> GetByNotInOrder()
+    {
+        var Products = await _unitOfWork.Products.GetByNotInOrder();
+        return Ok(Products);
+    }     
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

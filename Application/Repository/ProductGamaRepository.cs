@@ -23,7 +23,7 @@ namespace Application.Repository;
                                 .Distinct()
                                 .ToListAsync();
         }
-          public override async Task<(int totalRegistros, IEnumerable<ProductGama> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
+        public override async Task<(int totalRegistros, IEnumerable<ProductGama> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.ProductGamas as IQueryable<ProductGama>;
     

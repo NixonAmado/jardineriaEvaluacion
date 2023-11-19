@@ -11,8 +11,8 @@ using Persistence.Data;
 namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(DbAppContext))]
-    [Migration("20231118040851_InitialCreate03")]
-    partial class InitialCreate03
+    [Migration("20231119213401_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -254,15 +254,9 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("date")
                         .HasColumnName("order_date");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PaymentId")
                         .HasColumnType("varchar(255)")
                         .HasColumnName("payment_id");
-
-                    b.Property<string>("ProductId")
-                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("Status")
                         .HasMaxLength(20)
@@ -271,10 +265,6 @@ namespace Persistence.Data.Migrations
 
                     b.HasKey("Id")
                         .HasName("PRIMARY");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
 
                     b.HasIndex(new[] { "CustomerId" }, "custumer_id_idx");
 
@@ -305,22 +295,12 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("smallint")
                         .HasColumnName("line_number");
 
-                    b.Property<int?>("OrderId1")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductId1")
-                        .HasColumnType("varchar(15)");
-
                     b.Property<decimal>("UnitPrice")
                         .HasPrecision(15, 2)
                         .HasColumnType("decimal(15,2)")
                         .HasColumnName("unit_price");
 
                     b.HasKey("OrderId", "ProductId");
-
-                    b.HasIndex("OrderId1");
-
-                    b.HasIndex("ProductId1");
 
                     b.HasIndex(new[] { "OrderId" }, "order_id_idx");
 
@@ -647,18 +627,10 @@ namespace Persistence.Data.Migrations
                         .HasForeignKey("EmployeeId")
                         .HasConstraintName("employee_id");
 
-                    b.HasOne("Domain.Entities.Order", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("OrderId");
-
                     b.HasOne("Domain.Entities.Payment", "Payment")
                         .WithMany("Orders")
                         .HasForeignKey("PaymentId")
                         .HasConstraintName("payment_id");
-
-                    b.HasOne("Domain.Entities.Product", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("ProductId");
 
                     b.Navigation("Customer");
 
@@ -670,26 +642,18 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domain.Entities.OrderDetail", b =>
                 {
                     b.HasOne("Domain.Entities.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("order_id");
 
-                    b.HasOne("Domain.Entities.Order", null)
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId1");
-
                     b.HasOne("Domain.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("product_id");
-
-                    b.HasOne("Domain.Entities.Product", null)
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("ProductId1");
 
                     b.Navigation("Order");
 
@@ -794,8 +758,6 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domain.Entities.Order", b =>
                 {
                     b.Navigation("OrderDetails");
-
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Domain.Entities.Payment", b =>
@@ -811,8 +773,6 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domain.Entities.Product", b =>
                 {
                     b.Navigation("OrderDetails");
-
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Domain.Entities.ProductGama", b =>

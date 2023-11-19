@@ -9,4 +9,6 @@ public interface IEmployee : IGenericRepository<Employee>
     Task<IEnumerable<Employee>> GetNotAssociatedcustomerBossName();
     Task<object> GetEmployeesQuantity ();
     Task<IEnumerable<object>> GetEmployeesCustomerQuantity();
+    Task<IEnumerable<object>> GetEmployeesWithoutOrder();
+    Task<IEnumerable<object>> GetDataByJobTitle();
 }   

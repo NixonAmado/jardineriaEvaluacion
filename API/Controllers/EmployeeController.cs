@@ -73,7 +73,23 @@ public class EmployeeController : BaseApiController
         var Employees = await _unitOfWork.Employees.GetEmployeesCustomerQuantity();
         return Ok(Employees);
     }
-
+    [HttpGet("GetEmployeesWithoutOrder")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetEmployeesWithoutOrder()
+    {
+        var Employees = await _unitOfWork.Employees.GetEmployeesWithoutOrder();
+        return Ok(Employees);
+    }
+    
+    [HttpGet("GetDataByJobTitle")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetDataByJobTitle()
+    {
+        var Employees = await _unitOfWork.Employees.GetDataByJobTitle();
+        return Ok(Employees);
+    }
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

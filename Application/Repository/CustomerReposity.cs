@@ -203,6 +203,94 @@ namespace Application.Repository;
                                     lastName = c.ContactName + " " + c.ContactLastName
                                 }).ToListAsync();
         }
+
+        //1. Devuelve el nombre del cliente con mayor límite de crédito
+        //8. Devuelve el nombre del cliente con mayor límite de crédito. En linq tanto Any como All esperaran una condicion para hacer un filtro, no vi manera de solucionarlo con alguno de estos metodos.
+        
+        public async Task<Customer> GetByGreatestCreditLimit()
+        {
+            return await _context.Customers 
+                                .OrderByDescending(c => c.CreditLimit)
+                                .FirstOrDefaultAsync();
+        }
+        //4. Los clientes cuyo límite de crédito sea mayor que los pagos que haya realizado. (Sin utilizar INNER JOIN).
+        public async Task<IEnumerable<Customer>> GetByHigherCreditLimitThanPayment()
+        {
+            return await _context.Customers
+                                .Where(c => c.Orders.Any(o => o.PaymentId != null ))
+                                .Where(c => c.CreditLimit > c.Orders.Sum(o => o.Payment.Total))
+                                .ToListAsync();
+        }
+
+        //11. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+        public async Task<IEnumerable<Customer>> GetByNotOrder()
+        
+        {
+            //mi forma de simular un in
+            return await _context.Customers 
+                                .Where(c => c.Orders.Any(o => o.Payment == null))
+                                .ToListAsync();
+        }
+        //12. Devuelve un listado que muestre solamente los clientes que sí han realizado
+        public async Task<IEnumerable<Customer>> GetByOrderPaid()
+        {
+            //mi forma de simular un in
+            return await _context.Customers 
+                                .Where(c => c.Orders.Any(o => o.Payment != null))
+                                .ToListAsync();
+        }
+        //1. Devuelve el listado de clientes indicando el nombre del cliente y cuántos pedidos ha realizado. Tenga en cuenta que pueden existir clientes que no han realizado ningún pedido.
+
+        public async Task<IEnumerable<object>> GetNameAndOrdersQuantity()
+        {
+            return await _context.Customers
+                                .Select(c => new
+                                {
+                                    c.Name,
+                                    c.Orders.Count
+                                }).ToListAsync();
+        }
+        //2. Devuelve el nombre de los clientes que hayan hecho pedidos en 2008 ordenados alfabéticamente de menor a mayor.
+        public async Task<IEnumerable<Customer>> GetByOrderInYear(int year)
+        {
+            return await _context.Customers
+                                .Where(c => c.Orders.All(o => o.OrderDate.Year > year))
+                                .OrderBy(c => c.Name)
+                                .ToListAsync();
+        }
+        //3. Devuelve el nombre del cliente, el nombre y primer apellido de su representante de ventas y el número de teléfono de la oficina del representante de ventas, de aquellos clientes que no hayan realizado ningún pago.
+        public async Task<IEnumerable<object>> GetDataAndEmployee()
+        {
+            return await _context.Customers
+                                .Where(c => c.Orders.Any(o => o.PaymentId == null))
+                                .Select(c => new
+                                {
+                                    c.Name,
+                                    AssociatedEmployees = c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                        o.Employee.LastName1,
+                                        OfficeNumber = o.Employee.Office.Phone
+                                    })
+                                }).ToListAsync();
+        }
+        //4. Devuelve el listado de clientes donde aparezca el nombre del cliente, el nombre y primer apellido de su representante de ventas y la ciudad donde está su oficina.
+        //En la normalización, un cliente puede estar asociado a más de un empleado(1*)
+        public async Task<IEnumerable<object>> GetDataAndEmployeeCity()
+        {
+            return await _context.Customers
+                                .Select(c => new
+                                {
+                                    c.Name,
+                                    AssociatedEmployees = c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                        o.Employee.LastName1,
+                                        OfficeCity = o.Employee.Office.Address.City.Name
+                                    })
+                                }).ToListAsync();
+        }
+        
         public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Customers as IQueryable<Customer>;

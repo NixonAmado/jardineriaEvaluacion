@@ -17,7 +17,10 @@ namespace API.Dtos
 
         public decimal SupplierPrice { get; set; }
         public int StockQuantity { get; set; }
-
-
     }
-}
+
+    public class ProductNameDto
+    {
+        public string Name { get; set; }
+    }
+}   

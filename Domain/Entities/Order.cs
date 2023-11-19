@@ -29,7 +29,5 @@ public partial class Order
     public virtual Employee? Employee { get; set; }
 
     public virtual Payment? Payment { get; set; }
-    
-    public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
-    public ICollection<OrderDetail> OrderDetails { get; set; } 
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } 
 }

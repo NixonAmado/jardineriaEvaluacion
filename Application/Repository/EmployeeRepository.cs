@@ -71,8 +71,33 @@ namespace Application.Repository;
                                     customersAsociated = g.Count()
                                 }).ToListAsync();
         }
-        
-
+        //14. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no sean representante de ventas de ningún cliente.
+        public async Task<IEnumerable<object>> GetEmployeesWithoutOrder()
+        {
+            return await _context.Employees
+                                .Where(e => e.JobTitle == "REPRESENTANTE VENTAS"
+                                && !e.Orders.Any())
+                                .Select(e => new{
+                                    e.Name,
+                                    LastName = e.LastName1 + " " + e.LastName2,
+                                    e.JobTitle,
+                                    e.Office.Phone
+                                }).ToListAsync();
+        }
+        //5. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no sean representante de ventas de ningún cliente
+        public async Task<IEnumerable<object>> GetDataByJobTitle()
+        {
+            return await _context.Employees
+                                .Where(e => !e.Orders.Any())
+                                .Where(e => e.JobTitle == "REPRESENTANTE VENTAS"
+                                && !e.Orders.Any())
+                                .Select(e => new{
+                                    e.Name,
+                                    LastName = e.LastName1 + " " + e.LastName2,
+                                    e.JobTitle,
+                                    e.Office.Phone
+                                }).ToListAsync();
+        }
         public override async Task<(int totalRegistros, IEnumerable<Employee> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
                 var query = _context.Employees as IQueryable<Employee>;

@@ -29,14 +29,16 @@ class OrderDetailConfiguration:IEntityTypeConfiguration<OrderDetail>
             .HasPrecision(15, 2)
             .HasColumnName("unit_price");
 
-        builder.HasOne(d => d.Order).WithMany()
+        builder.HasOne(d => d.Order)
+            .WithMany(p => p.OrderDetails)
             .HasForeignKey(d => d.OrderId)
             .HasConstraintName("order_id");
-
-        builder.HasOne(d => d.Product).WithMany()
+        
+        builder.HasOne(d => d.Product)
+            .WithMany(p => p.OrderDetails)
             .HasForeignKey(d => d.ProductId)
             .HasConstraintName("product_id");
-       
+
     }
 }  
   

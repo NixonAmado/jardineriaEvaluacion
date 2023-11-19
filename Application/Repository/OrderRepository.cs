@@ -38,7 +38,13 @@ public class OrderRepository : GenericRepository<Order>, IOrder
                 .Where(o => o.ExpectedDate  > o.DeliveryDate)
                 .ToListAsync();
     }
-    //10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+    //10. Devuelve un listado con el código de pedido, código de cliente, fecha
+    //esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al
+    //menos dos días antes de la fecha esperada.
+    //• Utilizando la función ADDDATE de MySQL.
+    //• Utilizando la función DATEDIFF de MySQL.
+    //• ¿Sería posible resolver esta consulta utilizando el operador de suma + o
+    //resta -? -yes
     public async Task<IEnumerable<Order>> GetAllDeliveredEarlier()
     {
         return await _context.Orders
@@ -178,8 +184,22 @@ public class OrderRepository : GenericRepository<Order>, IOrder
                             .OrderByDescending(g => g.Total)
                             .ToListAsync();
         }
+        //16. Muestre la suma total de todos los pagos que se realizaron para cada uno de los años que aparecen en la tabla pagos.
 
-
+        public async Task<IEnumerable<object>> GetOrderTotalSumByYear()
+        {
+            //sinceramente, no sé como solucionar el error de nullidad
+            return await _context.Orders
+                                .Where(o => o.PaymentId != null)
+                                .GroupBy(o => o.Payment.PaymentDate)
+                                .Select(g => new
+                                {
+                                    PaymentDate = g.Key,
+                                    Total = g.Sum(o => o.Payment != null ? o.Payment.Total : 0)
+                                })
+                                .OrderByDescending(n => n.Total)
+                                .ToListAsync();
+        }
 
     public override async Task<(int totalRegistros, IEnumerable<Order> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
     {
@@ -199,4 +219,23 @@ public class OrderRepository : GenericRepository<Order>, IOrder
 
         return (totalRegistros, registros);
     }
+
+    // public override async Task<(int totalRegistros, IEnumerable<Order> registros)> GetAllDeliveredEarlier(int pageIndex, int pageSize, string search)
+    // {
+    //     var query = _context.Orders as IQueryable<Order>;
+
+    //     if (!string.IsNullOrEmpty(search))
+    //     {
+    //         query = query.Where(p => p.Id.ToString() == search);
+    //     }
+
+    //     query = query.OrderBy(p => p.Id);
+    //     var totalRegistros = await query.CountAsync();
+    //     var registros = await query
+    //         .Skip((pageIndex - 1) * pageSize)
+    //         .Take(pageSize)
+    //         .ToListAsync();
+
+    //     return (totalRegistros, registros);
+    // }
 }

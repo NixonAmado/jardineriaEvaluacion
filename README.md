@@ -250,46 +250,112 @@ facturado con impuestos (21% IVA).
 
 16. Muestre la suma total de todos los pagos que se realizaron para cada uno
 de los años que aparecen en la tabla pagos.
-1.4.8 Subconsultas
+```
+/API/order/GetOrderTotalSumByYear
+```
+
+** 1.4.8 Subconsultas
 1.4.8.1 Con operadores básicos de comparación
 1. Devuelve el nombre del cliente con mayor límite de crédito.
+```
+/API/customer/GetByGreatestCreditLimit
+```
 2. Devuelve el nombre del producto que tenga el precio de venta más caro.
+```
+/API/product/GetByHigherSalesPrice
+```
 3. Devuelve el nombre del producto del que se han vendido más unidades.
-(Tenga en cuenta que tendrá que calcular cuál es el número total de
-unidades que se han vendido de cada producto a partir de los datos de la
-tabla detalle_pedido)
+(Tenga en cuenta que tendrá que calcular cuál es el número total de unidades que se han vendido de cada producto a partir de los datos de la tabla detalle_pedido)
+```
+/API/product/GetByHigherSalesPrice
+```
 4. Los clientes cuyo límite de crédito sea mayor que los pagos que haya
+```
+API/customer/GetByHigherCreditLimitThanPayment
+```
 realizado. (Sin utilizar INNER JOIN).
+
 1.4.8.2 Subconsultas con ALL y ANY
-8. Devuelve el nombre del cliente con mayor límite de crédito.
-9. Devuelve el nombre del producto que tenga el precio de venta más caro.
+
+//8. Devuelve el nombre del cliente con mayor límite de crédito. En linq tanto Any como All esperaran una condicion para hacer un filtro, no vi manera de solucionarlo con alguno de estos metodos.
+
+```
+/API/customer/GetByGreatestCreditLimit
+```
+9. Devuelve el nombre del producto que tenga el precio de venta más caro.En linq tanto Any como All esperaran una condicion para hacer un filtro, no vi manera de solucionarlo con alguno de estos metodos.
+```
+/API/product/GetByHigherSalesPrice
+```
+
 1.4.8.3 Subconsultas con IN y NOT IN
 11. Devuelve un listado que muestre solamente los clientes que no han
 realizado ningún pago.
-12. Devuelve un listado que muestre solamente los clientes que sí han realizado
-algún pago.
+```
+/API/customer/GetByNotOrder
+```
+12. Devuelve un listado que muestre solamente los clientes que sí han realizado algún pago.
+```
+/API/customer/GetByOrderPaid
+```
 13. Devuelve un listado de los productos que nunca han aparecido en un
 pedido.
+```
+/API/product/GetByNotInOrder
+```
 14. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos
 empleados que no sean representante de ventas de ningún cliente.
+```
+/API/employee/GetEmployeesWithoutOrder
+```
 1.4.8.4 Subconsultas con EXISTS y NOT EXISTS
+ya que se puede usar las mismas rutas que los anteriores enpoints, no haré los enpoints, sino que, haré la lógica SQL
+```
 18. Devuelve un listado que muestre solamente los clientes que no han
 realizado ningún pago.
+Select * From jardineria.customer c
+WHERE Exist 
+( 
+    Select 1 From jardineria.order o
+    where c.Id = o.customer_Id AND
+    o.Payment_Id IS NOT NULL
+)
+```
 19. Devuelve un listado que muestre solamente los clientes que sí han realizado
 algún pago.
-1.4.8.5 Subconsultas correlacionadas
+```
+SELECT * FROM jardineria.Customer c
+WHERE NOT EXIST
+(
+    SELECT 1 FROM Order o
+    WHERE c.Id = o.Customer_id
+    AND o.Payment_Id IS NOT NULL
+)
+
+```
 1.4.9 Consultas variadas
 1. Devuelve el listado de clientes indicando el nombre del cliente y cuántos
 pedidos ha realizado. Tenga en cuenta que pueden existir clientes que no
 han realizado ningún pedido.
-2. Devuelve el nombre de los clientes que hayan hecho pedidos en 2008
+```
+/API/customer/GetNameAndOrdersQuantity
+```
+2. Devuelve el nombre de los clientes que hayan hecho pedidos en X
 ordenados alfabéticamente de menor a mayor.
+```
+API/customer/GetByOrderInYear/{year}
+```
 3. Devuelve el nombre del cliente, el nombre y primer apellido de su
 representante de ventas y el número de teléfono de la oficina del
 representante de ventas, de aquellos clientes que no hayan realizado ningún
 pago.
+```
+/API/customer/GetDataAndEmployee
+```
 4. Devuelve el listado de clientes donde aparezca el nombre del cliente, el
 nombre y primer apellido de su representante de ventas y la ciudad donde
 está su oficina.
+```
+/API/customer/GetDataAndEmployeeCity
+```
 5. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos
 empleados que no sean representante de ventas de ningún cliente
