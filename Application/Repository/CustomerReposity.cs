@@ -1,5 +1,6 @@
 using Domain.Entities;
 using Domain.Interfaces;
+using iText.Svg.Renderers.Path.Impl;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 
@@ -154,7 +155,6 @@ namespace Application.Repository;
         }
         //1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
 
-        //8. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
         
         public async Task<IEnumerable<Customer>> GetByOrderNotPaid()
         {
@@ -290,6 +290,15 @@ namespace Application.Repository;
                                     })
                                 }).ToListAsync();
         }
+
+        //8. Devuelve el nombre del cliente con mayor límite de crédito. En linq tanto Any como All esperaran una condicion para hacer un filtro, no vi manera de solucionarlo con alguno de estos metodos.
+        public string GetByGreatestCreditLimitAll()
+        {
+            var entities = _context
+                .Customers
+                .FirstOrDefault(c1 => _context.Customers.All(c2 => c2.CreditLimit <= c1.CreditLimit))?.Name;
+            return entities;
+        }
         
         public override async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetAllAsync(int pageIndex, int pageSize, string search)
             {
@@ -309,4 +318,104 @@ namespace Application.Repository;
     
                 return (totalRegistros, registros);
             }
+
+        public async Task<(int totalRegistros, IEnumerable<Customer> registros)> GetByOrderNotPaid(int pageIndex, int pageSize, string search)
+        {
+            // Build the initial query without executing it
+            var query = _context.Customers
+                                .Where(c => c.Orders.Any(o => o.PaymentId == null));
+
+            // Apply search filter if provided
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Id.ToString() == search);
+            }
+
+            // Order the query
+            query = query.OrderBy(p => p.Id);
+
+            // Materialize the query and retrieve the data
+            var totalRegistros = await query.CountAsync();
+            var registros = await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (totalRegistros, registros);
+        }
+
+        public async Task<(int totalRegistros, IEnumerable<object> registros)> GetByOrderPaymentEmployee(int pageIndex, int pageSize, string search)
+        {
+            // Build the initial query without executing it
+            var query = _context.Customers
+                                .Include(c => c.Orders)
+                                .ThenInclude(o => o.Employee)
+                                .Where(c => c.Orders.Any(o => o.PaymentId != null))
+                                .Select(c => new 
+                                {
+                                    c.Name,
+                                    associatedEmployees = 
+                                    c.Orders.Select(o => new
+                                    {
+                                        o.Employee.Name,
+                                        City = o.Employee.Office.Address.City.Name
+                                    }).Distinct()
+                                });
+
+            // Apply search filter if provided
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Name == search);
+            }
+
+            // Order the query
+            query = query.OrderBy(p => p.Name);
+
+            // Materialize the query and retrieve the data
+            var totalRegistros = await query.CountAsync();
+            var registros = await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (totalRegistros, registros);
+        }
+        public async Task<(int totalRegistros, IEnumerable<object> registros)> GetNameAndOrdersQuantity(int pageIndex, int pageSize, string search)
+        {
+            // Build the initial query without executing it
+            var query = _context.Customers
+                                .Select(c => new
+                                {
+                                    c.Name,
+                                    c.Orders.Count
+                                });
+
+            // Apply search filter if provided
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Name == search);
+            }
+
+            // Order the query
+            query = query.OrderBy(p => p.Name);
+
+            // Materialize the query and retrieve the data
+            var totalRegistros = await query.CountAsync();
+            var registros = await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (totalRegistros, registros);
+        }
+
     }
+
+
+
+
+
+
+
+
+      

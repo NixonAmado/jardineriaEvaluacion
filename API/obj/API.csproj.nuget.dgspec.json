@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\API.csproj": {}
+    "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\API.csproj": {
+    "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\API\\obj\\",
+        "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\api\\API.csproj",
+        "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj"
+              "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj"
               }
             }
           }
@@ -112,24 +112,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -138,21 +120,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj": {
+    "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Application\\obj\\",
+        "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -164,11 +146,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj"
+              "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj"
+              "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
+                "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -199,40 +181,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
+    "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -280,40 +248,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
+    "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\AIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Persistence\\obj\\",
+        "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\APT01-65\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\APT01-65\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -325,8 +279,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\AIO\\Desktop\\jardineriaEvaluacion\\Domain\\Domain.csproj"
+              "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\APT01-65\\Documents\\jardineriaEvaluacion\\Domain\\Domain.csproj"
               }
             }
           }
@@ -365,26 +319,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

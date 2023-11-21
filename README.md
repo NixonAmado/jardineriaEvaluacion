@@ -1,5 +1,5 @@
 ### Uso de Json Web Token
-Ya que no se cargan usuarios en la base de datos por medio de csvs, es necesesario crearlo. Por defecto el rol de usuario va ser Empleado, el cual puede hacer peticiones a todo el CRUD menos a los enpoints especiales. Cuando se prueben los endpoints es necesario que el usuario tenga el rol de Administrador el cual se le asigna por medio del addrole.
+Ya que los usuarios se cargan  en la base de datos por medio de "Data Seeding". En Entity Framework Core, se utiliza para prellenar la base de datos con datos iniciales durante las migraciones. Para este proyecto se optó por dejar sin autorización los controladores que tienen enpoints por mayor facilidad. 
 
 Los datos necesarios para poder hacer post a los endpoints de JWT y en general se encuetran más facilmente en el Swagger, que se incializa por medio de dotnet watch run.
 
@@ -7,16 +7,28 @@ Nota: He tenido inconvenientes con la autorización, ya que, en vez de lanzarme 
 
 Si el token caduca, el programa esta diseñado para que por medio de su refresh token pueda generar otro.
 
-Tomamos el refresh token
-
-creamos la cookie y apartir de ese refresh token se generan nuevos tokens
+Tomamos el refresh token, creamos la cookie y apartir de ese refresh token se generan nuevos tokens
 Si el token expira podemos generar cuantos queramos con el mismo refresh token. Si el refresh token expira se debe generar otro token desde el endpoint token.
 
 - Duración del refresh token: 1 hora
 - Duración del token de acceso: 1 minuto
 Si se presentan inconvenientes a la hora de generar un nuevo token desde el refresh token hay que borrar las cookies.
 
-CONSULTAS
+
+### NORMALIZACIÓN  
+![Diseño de base de datos](./db.png)
+
+
+#### Pasos para el volcado de datos a la bd
+1. Para este proyecto se requiere el uso de mySql Workbench
+2. Entra a Api y ejecuta el comando dotnet run, si no funciona puedes hacer uso del script Update para que ef convierta tu estructura orienta a objetos a una tabular en la bd.
+3. Una tengas las tablas que vas a usar y que todo salió bien, puedes hacer el volcado de datos dirigiendote a [Datos](./Datos.md)
+- Una vez adentro de Datos puedes hacer ctrl + A para copiar todo el texto.
+- Vas a Workbench y elijes la bd llamada jardineria2, abres un archivo SQL y le das a ctrl + V
+- Señala todos los datos con ctrl + A y le das al rayo que apartece en el menú de ejecución que se encuentra en la parte superior del archivo
+- Y ya quedaría el volcado de datos echo.
+
+## CONSULTAS
 
 1. Devuelve un listado con el nombre de los todos los clientes 
 españoles.
@@ -50,13 +62,15 @@ tiempo.
 10. Devuelve un listado con el código de pedido, código de cliente, fecha
 esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al
 menos dos días antes de la fecha esperada.
-• Utilizando la función ADDDATE de MySQL.
-• Utilizando la función DATEDIFF de MySQL.
+
 • ¿Sería posible resolver esta consulta utilizando el operador de suma + o
 resta -? -yes
-
 ```
 /API/Order/GetAllDeliveredEarlier
+```
+ENPOINT CON VERSIONADO (se busca por medio del id):
+```
+ API/order/GetAllDeliveredEarlier?ver=1.1
 ```
 
 11. Devuelve un listado de todos los pedidos que fueron (X status) en X.
@@ -98,7 +112,7 @@ sintaxis de SQL2 se deben resolver con INNER JOIN y NATURAL JOIN.
 
 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 ```
-/API/customer/GetNameAndEmployee
+/API/customer/GetByOrderEmployee
 ```
 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con
 el nombre de sus representantes de ventas.
@@ -111,6 +125,11 @@ representante.
 ```
 /API/customer/GetByOrderPaymentEmployee
 ```
+ENPOINT CON VERSIONADO (se busca por medio del Name):
+```
+/API/customer/GetByOrderPaymentEmployee?ver=1.1
+```
+
 5. Devuelve el nombre de los clientes que no hayan hecho pagos y el nombre
 de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 ```
@@ -128,20 +147,25 @@ tiempo un pedido.
 ```
 8. Devuelve un listado de las diferentes gamas de producto que ha comprado
 cada cliente.
+```
+/API/productGama/GetByProductGama
+```
 
 
 1.4.6 Consultas multitabla (Composición externa)
 Resuelva todas las consultas utilizando las cláusulas LEFT JOIN, RIGHT JOIN, NATURAL
 LEFT JOIN y NATURAL RIGHT JOIN.
-```
-/API/productGama/GetByProductGama
-```
 
 1. Devuelve un listado que muestre solamente los clientes que no han
 realizado ningún pago.
 ```
 /API/customer/GetByOrderNotPaid
 ```
+ENPOINT CON VERSIONADO (se busca por medio del id):
+```
+ API/customer/GetByOrderNotPaid?ver=1.1
+```
+
 2. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
 ```
 /API/customer/GetByNotPaidAndNotOrder
@@ -339,6 +363,11 @@ han realizado ningún pedido.
 ```
 /API/customer/GetNameAndOrdersQuantity
 ```
+ENPOINT CON VERSIONADO (se busca por medio del id):
+```
+API/customer/GetNameAndOrdersQuantity?ver=1.1
+```
+
 2. Devuelve el nombre de los clientes que hayan hecho pedidos en X
 ordenados alfabéticamente de menor a mayor.
 ```

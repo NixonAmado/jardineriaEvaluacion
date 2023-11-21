@@ -26,4 +26,8 @@ public interface ICustomer : IGenericRepository<Customer>
     Task<IEnumerable<Customer>> GetByOrderInYear(int year);
     Task<IEnumerable<object>> GetDataAndEmployee();
     Task<IEnumerable<object>> GetDataAndEmployeeCity();
+    string GetByGreatestCreditLimitAll();
+    Task<(int totalRegistros, IEnumerable<Customer> registros)> GetByOrderNotPaid(int pageIndex, int pageSize, string search);
+    Task<(int totalRegistros, IEnumerable<object> registros)> GetByOrderPaymentEmployee(int pageIndex, int pageSize, string search);
+    Task<(int totalRegistros, IEnumerable<object> registros)> GetNameAndOrdersQuantity(int pageIndex, int pageSize, string search);
 }

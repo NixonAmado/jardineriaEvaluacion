@@ -61,15 +61,8 @@ public class CustomerController : BaseApiController
         var Customers = await _unitOfWork.Customers.GetNameAndEmployee();
         return Ok(Customers);
     }
-    
-    [HttpGet("GetNameAndNameEmployee")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<object>>> GetByOrderEmployee()
-    {
-        var Customers = await _unitOfWork.Customers.GetByOrderEmployee();
-        return Ok(Customers);
-    }
+
+
     [HttpGet("GetByOrderNotPaymentEmployeeCity")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -85,15 +78,6 @@ public class CustomerController : BaseApiController
     public async Task<ActionResult<IEnumerable<object>>> GetByOrderNotPaymentEmployee()
     {
         var Customers = await _unitOfWork.Customers.GetByOrderNotPaymentEmployee();
-        return Ok(Customers);
-    }
-    
-    [HttpGet("GetByOrderPaymentEmployee")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<object>>> GetByOrderPaymentEmployee()
-    {
-        var Customers = await _unitOfWork.Customers.GetByOrderPaymentEmployee();
         return Ok(Customers);
     }
 
@@ -190,14 +174,6 @@ public class CustomerController : BaseApiController
         return _mapper.Map<List<P_CustomerDto>>(Custumers);
     }
     
-    [HttpGet("GetNameAndOrdersQuantity")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<object>>> GetNameAndOrdersQuantity()
-    {
-        var Custumers = await _unitOfWork.Customers.GetNameAndOrdersQuantity();
-        return Ok(Custumers);
-    }
     
     [HttpGet("GetByOrderInYear/{year}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -224,6 +200,84 @@ public class CustomerController : BaseApiController
         var Customer = await _unitOfWork.Customers.GetDataAndEmployeeCity();
         return Ok(Customer);
     }
+
+    [HttpGet("")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public string GetByGreatestCreditLimitAll()
+    {
+        var Customer =  _unitOfWork.Customers.GetByGreatestCreditLimitAll();
+        return Customer;
+    }
+
+    [HttpGet("GetByGreatestCreditLimitAll")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public ActionResult<string> GetByGreatestCreditLimitAll1()
+    {
+        var Customer = _unitOfWork.Customers.GetByGreatestCreditLimitAll();
+        return Ok(Customer);
+    }
+
+    [HttpGet("GetByOrderEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByOrderEmployee()
+    {
+        var Customers = await _unitOfWork.Customers.GetByOrderEmployee();
+        return Ok(Customers);
+    }
+
+    [HttpGet("GetByOrderNotPaid")]
+    [ApiVersion("1.1")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Pager<object>>> GetByOrderNotPaid([FromQuery] Params CustomerParams)
+    {
+        var (totalRegistros, registros) = await _unitOfWork.Customers.GetByOrderNotPaid(CustomerParams.PageIndex,CustomerParams.PageSize,CustomerParams.Search);
+        var listaProv = _mapper.Map<List<object>>(registros);
+        return new Pager<object>(listaProv,totalRegistros,CustomerParams.PageIndex,CustomerParams.PageSize,CustomerParams.Search);
+    }
+
+    [HttpGet("GetByOrderPaymentEmployee")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetByOrderPaymentEmployee()
+    {
+        var Customers = await _unitOfWork.Customers.GetByOrderPaymentEmployee();
+        return Ok(Customers);
+    }
+
+    [HttpGet("GetByOrderPaymentEmployee")]
+    [ApiVersion("1.1")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Pager<object>>> GetByOrderPaymentEmployee([FromQuery] Params CustomerParams)
+    {
+        var (totalRegistros, registros) = await _unitOfWork.Customers.GetByOrderPaymentEmployee(CustomerParams.PageIndex,CustomerParams.PageSize,CustomerParams.Search);
+        var listaProv = _mapper.Map<List<object>>(registros);
+        return new Pager<object>(listaProv,totalRegistros,CustomerParams.PageIndex,CustomerParams.PageSize,CustomerParams.Search);
+    }  
+
+    [HttpGet("GetNameAndOrdersQuantity")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetNameAndOrdersQuantity()
+    {
+        var Custumers = await _unitOfWork.Customers.GetNameAndOrdersQuantity();
+        return Ok(Custumers);
+    }
+    [HttpGet("GetNameAndOrdersQuantity")]
+    [ApiVersion("1.1")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Pager<object>>> GetNameAndOrdersQuantity([FromQuery] Params CustomerParams)
+    {
+        var (totalRegistros, registros) = await _unitOfWork.Customers.GetNameAndOrdersQuantity(CustomerParams.PageIndex,CustomerParams.PageSize,CustomerParams.Search);
+        var listaProv = _mapper.Map<List<object>>(registros);
+        return new Pager<object>(listaProv,totalRegistros,CustomerParams.PageIndex,CustomerParams.PageSize,CustomerParams.Search);
+    }
+
     [HttpGet]
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]

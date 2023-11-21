@@ -220,22 +220,21 @@ public class OrderRepository : GenericRepository<Order>, IOrder
         return (totalRegistros, registros);
     }
 
-    // public override async Task<(int totalRegistros, IEnumerable<Order> registros)> GetAllDeliveredEarlier(int pageIndex, int pageSize, string search)
-    // {
-    //     var query = _context.Orders as IQueryable<Order>;
+    public  async Task<(int totalRegistros, IEnumerable<Order> registros)> GetAllDeliveredEarlier(int pageIndex, int pageSize, string search)
+    {
+        var query = _context.Orders
+                .Where(o => (o.DeliveryDate.HasValue ? o.DeliveryDate.Value.Day + 2  : DateTime.MinValue.Day) <= o.ExpectedDate.Day &&
+                o.DeliveryDate.HasValue);
 
-    //     if (!string.IsNullOrEmpty(search))
-    //     {
-    //         query = query.Where(p => p.Id.ToString() == search);
-    //     }
-
-    //     query = query.OrderBy(p => p.Id);
-    //     var totalRegistros = await query.CountAsync();
-    //     var registros = await query
-    //         .Skip((pageIndex - 1) * pageSize)
-    //         .Take(pageSize)
-    //         .ToListAsync();
-
-    //     return (totalRegistros, registros);
-    // }
+        {
+            query = query.Where(p => p.Id.ToString() == search);
+        }
+        query = query.OrderBy(p => p.Id);
+        var totalRegistros = await query.CountAsync();
+        var registros = await query
+            .Skip((pageIndex - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+        return (totalRegistros, registros);
+    }
 }

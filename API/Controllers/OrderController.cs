@@ -48,11 +48,11 @@ public class OrderController : BaseApiController
     [ApiVersion("1.1")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Pager<P_OrderDto>>> GetAllDeliveredEarlier([FromQuery] Params OrderParams)
+    public async Task<ActionResult<Pager<EssencialOrderAtrDto>>> GetAllDeliveredEarlier([FromQuery] Params OrderParams)
     {
         var (totalRegistros, registros) = await _unitOfWork.Orders.GetAllAsync(OrderParams.PageIndex,OrderParams.PageSize,OrderParams.Search);
-        var listaProv = _mapper.Map<List<P_OrderDto>>(registros);
-        return new Pager<P_OrderDto>(listaProv,totalRegistros,OrderParams.PageIndex,OrderParams.PageSize,OrderParams.Search);
+        var listaProv = _mapper.Map<List<EssencialOrderAtrDto>>(registros);
+        return new Pager<EssencialOrderAtrDto>(listaProv,totalRegistros,OrderParams.PageIndex,OrderParams.PageSize,OrderParams.Search);
     }
 
 
